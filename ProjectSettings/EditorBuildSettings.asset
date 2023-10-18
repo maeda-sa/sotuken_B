@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/maeda/Scene/Result.unity
+    guid: 6ea40a40da3a7aa4498d0a6c09a4e828
+  - enabled: 1
+    path: Assets/maeda/Scene/test.unity
+    guid: b7d8bf85a9381624290431583ccea192
   m_configObjects: {}
