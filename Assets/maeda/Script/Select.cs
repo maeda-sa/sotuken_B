@@ -38,7 +38,8 @@ public class Select : MonoBehaviour
 
     public void EndGame()
     {
-        if(!isStop)
-            Application.Quit();
+        if (!isStop)
+            UnityEditor.EditorApplication.isPlaying = false;
+            //Application.Quit();
     }
 }
