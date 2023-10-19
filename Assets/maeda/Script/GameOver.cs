@@ -8,7 +8,7 @@ namespace Asset.maeda
 {
     public class GameOver : MonoBehaviour
     {
-        TextMeshProUGUI guilt;
+        [SerializeField]TextMeshProUGUI guilt;
 
         private void Start()
         {

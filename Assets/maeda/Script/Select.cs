@@ -31,7 +31,7 @@ public class Select : MonoBehaviour
     {
         if (isStop)
         {
-            item.SetActive(false);
+            item.SetActive(true);
             isStop = false;
         }
     }
