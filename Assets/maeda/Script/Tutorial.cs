@@ -8,7 +8,7 @@ public class Tutorial : MonoBehaviour
 {
     [SerializeField] private Image image;
     public List<Sprite> Timage;
-    [SerializeField] private TextMeshPro text;
+    [SerializeField] private TextMeshProUGUI text;
     [SerializeField,TextArea]private List<string> Tuttext;
     private int i = 0;
 
@@ -24,9 +24,16 @@ public class Tutorial : MonoBehaviour
         
     }
 
-    private void pageUp()
+    public void pageUp()
     {
-        if (i > Timage.Count)
+        if (i >= Timage.Count-1)
+        {
+            i = 1;
+            image.sprite = Timage[i];
+            text.text = Tuttext[1];
+            
+        }
+        else
         {
             i++;
             image.sprite = Timage[i];
@@ -34,9 +41,9 @@ public class Tutorial : MonoBehaviour
         }
     }
 
-    private void pageDown()
+    public void pageDown()
     {
-        if (i < 0)
+        if (i <= 0)
         {
             i = 0;
             image.sprite = Timage[i];
