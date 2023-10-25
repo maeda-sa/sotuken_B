@@ -37,7 +37,7 @@ public class Select : MonoBehaviour
     {
         for (int i = 0; i < bike.Count; i++)
         {
-            bike[i].transform.Rotate(new Vector3(0, 100, 0) * Time.deltaTime);
+            bike[i].transform.Rotate(new Vector3(0, 50, 0) * Time.deltaTime);
         }
         bg = BGMSlider.value * 100;
         se = SESlider.value * 100;
