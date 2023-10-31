@@ -32,7 +32,7 @@ public class CalcVelocityExample : MonoBehaviour
         speed = _rb.velocity.magnitude;
 
         // 現在速度をログ出力
-        print($"velocity = {velocity}");
+        // print($"velocity = {velocity}");
 
         // 前フレーム位置を更新
         _prevPosition = position;
