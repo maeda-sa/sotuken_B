@@ -10,6 +10,7 @@ public class Tutorial : MonoBehaviour
     public List<Sprite> Timage;
     [SerializeField] private TextMeshProUGUI text;
     [SerializeField,TextArea]private List<string> Tuttext;
+    [SerializeField] private AudioSource SE;
     private int i = 0;
 
     void Start()
@@ -26,6 +27,7 @@ public class Tutorial : MonoBehaviour
 
     public void pageUp()
     {
+        SE.Play();
         if (i >= Timage.Count-1)
         {
             i = 1;
@@ -43,6 +45,7 @@ public class Tutorial : MonoBehaviour
 
     public void pageDown()
     {
+        SE.Play();
         if (i <= 0)
         {
             i = 0;

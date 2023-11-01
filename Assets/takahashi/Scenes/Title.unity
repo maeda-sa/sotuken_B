@@ -536,7 +536,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c865dabbaf342274c9efa4fe75963c7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneName: Result
+  SceneName: Select
   start: {fileID: 503903839}
   speed: 1
 --- !u!1 &1847825997
