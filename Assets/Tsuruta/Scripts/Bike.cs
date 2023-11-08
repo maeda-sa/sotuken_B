@@ -13,6 +13,7 @@ public class Bike : MonoBehaviour
     public float maxSteeringAngle;
     public float breake;
 
+    private Vector2 _look;
     private Vector3 _velocity;
     private Vector3 _angle;
     private Vector3 _primary_angle;
@@ -23,7 +24,7 @@ public class Bike : MonoBehaviour
     {
         _angle = cm.gameObject.transform.localEulerAngles;
         _primary_angle = cm.gameObject.transform.localEulerAngles;
-        GetComponent<Rigidbody>().centerOfMass = new Vector3(0, -1.5f, -0.3f);
+        GetComponent<Rigidbody>().centerOfMass = new Vector3(0, -1.5f, 0.3f);
     }
 
     public void ApplyLocalPositionToVisuals(WheelCollider collider)
@@ -43,6 +44,7 @@ public class Bike : MonoBehaviour
     {
         float motor = maxMotorTorque * _velocity.z;
         float steering = maxSteeringAngle * _velocity.x;
+        _angle = new Vector3(_angle.x - _look.y, _angle.y + _look.x);
 
         foreach (AxleInfo axleInfo in axleInfos)
         {
@@ -104,9 +106,11 @@ public class Bike : MonoBehaviour
         foreach (GameObject pedal in pedals)
         {
             var rot = pedal.transform.localEulerAngles;
-            rot.z += _velocity.z;
+            // rot.z += _velocity.z;
             pedal.transform.localEulerAngles = rot;
         }
+
+
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -118,9 +122,7 @@ public class Bike : MonoBehaviour
 
     public void OnLook(InputAction.CallbackContext context)
     {
-        var value = context.ReadValue<Vector2>();
-
-        _angle = new Vector3(_angle.x - value.y * 0.1f, _angle.y + value.x * 0.1f);
+        _look = context.ReadValue<Vector2>();
     }
 
     public void OnStop(InputAction.CallbackContext context)

@@ -6,26 +6,31 @@ public class TrafficCheck_Child : MonoBehaviour
 {
     [SerializeField] private TrafficLight _light;
 
-    private bool _red;
+    private bool _blue;
 
     private void Update()
     {
-        if (_light.CarCheck() == LightType.blue)
+        if (_light.CarCheck() == LightType.red)
         {
-            _red = false;
+            _blue = false;
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(_light.CarCheck() == LightType.red && other.gameObject.tag == "Player")
+        if(_light.CarCheck() == LightType.blue && other.gameObject.tag == "Player")
         {
-            _red = true;
+            _blue = true;
         }
     }
 
-    public bool RedCheck()
+    public bool BlueCheck()
     {
-        return _red;
+        return _blue;
+    }
+
+    public void CheckReset()
+    {
+        _blue = false;
     }
 }
