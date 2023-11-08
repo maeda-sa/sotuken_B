@@ -5,6 +5,7 @@ using UnityEngine;
 public enum LightType
 {
     red,
+    yellow,
     blue
 }
 
@@ -16,6 +17,9 @@ public class TrafficLight : MonoBehaviour
 
     [Header("経過時間")]
     [SerializeField] private float time;
+
+    [Header("切り替わる時間")]
+    [SerializeField] private float change;
 
     [Header("歩行者信号付きか")]
     [SerializeField] private bool _worker;
@@ -33,6 +37,9 @@ public class TrafficLight : MonoBehaviour
     [SerializeField] private GameObject _frontBlue;
     [SerializeField] private GameObject _backBlue;
     [SerializeField] private GameObject _workerBlue;
+
+    [Header("レッドライン")]
+    [SerializeField] private GameObject _redLine;
 
     private bool _caution;
     private bool _stop;
@@ -55,16 +62,27 @@ public class TrafficLight : MonoBehaviour
                 break;
         }
 
+        StartCoroutine(TrafficLightCoRoutine());
         StartCoroutine(WorkerTraffic());
     }
 
     // Update is called once per frame
     void Update()
     {
+        SetTrafficLightState(_type);
+
         time += Time.deltaTime;
 
-        if(time > 50)
+        if (time > 32) time = 0;
+    }
+
+    private IEnumerator TrafficLightCoRoutine()
+    {
+        while (true)
         {
+            // 車青
+            yield return new WaitForSeconds(change - 10);
+
             _wtype = LightType.red;
 
             if (_worker)
@@ -72,49 +90,42 @@ public class TrafficLight : MonoBehaviour
                 _workerBlue.SetActive(false);
                 _workerRed.SetActive(true);
             }
-        }
 
-        if(time > 57 && time < 60 && !_caution && _type == LightType.blue)
-        {
-            _caution = true;
+            yield return new WaitForSeconds(7);
 
-            _frontBlue.SetActive(false);
-            _backBlue.SetActive(false);
+            if(_type == LightType.blue) _type = LightType.yellow;
 
-            _frontYellow.SetActive(true);
-            _backYellow.SetActive(true);
-        }
-
-        if (time > 60 && !_stop)
-        {
-            _stop = true;
-
-            _frontYellow.SetActive(false);
-            _backYellow.SetActive(false);
-
-            _frontRed.SetActive(true);
-            _backRed.SetActive(true);
+            yield return new WaitForSeconds(3);
 
             if (_type == LightType.red) Invoke("Blue", 2f);
             _type = LightType.red;
-        }
 
-        if (time > 62)
-        {
-            time = 0;
-            _caution = false;
-            _stop = false;
+            yield return new WaitForSeconds(2);
         }
     }
 
+    private void SetTrafficLightState(LightType lightType)
+    {
+        bool isBlue = lightType == LightType.blue;
+        bool isYellow = lightType == LightType.yellow;
+        bool isRed = lightType == LightType.red;
+
+        _frontBlue.SetActive(isBlue);
+        _backBlue.SetActive(isBlue);
+
+        _frontYellow.SetActive(isYellow);
+        _backYellow.SetActive(isYellow);
+
+        _frontRed.SetActive(isRed);
+        _backRed.SetActive(isRed);
+        _redLine.SetActive(isRed);
+    }
+
+
+
+
     private void Blue()
     {
-        _frontRed.SetActive(false);
-        _backRed.SetActive(false);
-
-        _frontBlue.SetActive(true);
-        _backBlue.SetActive(true);
-
         if (_worker)
         {
             _workerRed.SetActive(false);
@@ -123,6 +134,7 @@ public class TrafficLight : MonoBehaviour
 
         _type = LightType.blue;
         _wtype = LightType.blue;
+        _redLine.SetActive(false);
     }
 
     IEnumerator WorkerTraffic()
@@ -131,7 +143,7 @@ public class TrafficLight : MonoBehaviour
         {
             yield return new WaitForSeconds(0.5f);
 
-            if (time > 45 && _worker && _wtype == LightType.blue)
+            if (time > 15 && _worker && _wtype == LightType.blue)
             {
                 if(_workerBlue.activeSelf) _workerBlue.SetActive(false);
                 else _workerBlue.SetActive(true);

@@ -6,6 +6,8 @@ public class TrafficCheck : MonoBehaviour
 {
     public List<TrafficCheck_Child> _tcc;
 
+    private int i;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,12 +24,19 @@ public class TrafficCheck : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            for(int i = 0; i < _tcc.Count; i++)
+            for(i = 0; i < _tcc.Count; i++)
             {
-                if (_tcc[i].RedCheck())
+                if (_tcc[i].BlueCheck())
                 {
-                    Debug.Log("M†–³Ž‹");
+                    i = 0;
+                    _tcc[i].CheckReset();
+                    break;
                 }
+            }
+
+            if(i != 0)
+            {
+                Debug.Log("M†–³Ž‹");
             }
         }
     }
