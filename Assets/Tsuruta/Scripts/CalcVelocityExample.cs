@@ -37,4 +37,9 @@ public class CalcVelocityExample : MonoBehaviour
         // 前フレーム位置を更新
         _prevPosition = position;
     }
+
+    public float GetSpeed()
+    {
+        return speed;
+    }
 }
