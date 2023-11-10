@@ -42,7 +42,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "RightStop",
+                    "name": "Accel",
                     "type": "Value",
                     "id": "523d91ab-676d-46ce-8464-8fb3752e6a16",
                     "expectedControlType": "Button",
@@ -51,13 +51,13 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "LeftStop",
-                    "type": "Value",
-                    "id": "b8114c07-629d-4a94-96f3-ae4f48e8f0cb",
+                    "name": "Back",
+                    "type": "Button",
+                    "id": "2fc63fa7-5bd2-4c68-a80a-64aaf5711860",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": true
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -294,23 +294,34 @@
                 },
                 {
                     "name": "",
-                    "id": "6506910f-63ff-4124-a7a9-8085c7f9dec6",
-                    "path": "<DualShockGamepad>/rightTrigger",
+                    "id": "6d79841d-b029-4445-9195-162ec4a8c54d",
+                    "path": "<DualShockGamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "RightStop",
+                    "action": "Stop",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "a75b0eb6-d1a6-4bef-847c-0bcf79fc74f8",
-                    "path": "<DualShockGamepad>/leftTrigger",
+                    "id": "6506910f-63ff-4124-a7a9-8085c7f9dec6",
+                    "path": "<DualShockGamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "LeftStop",
+                    "action": "Accel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "52b8141a-8e81-489a-b145-16f679372037",
+                    "path": "<DualShockGamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Back",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
