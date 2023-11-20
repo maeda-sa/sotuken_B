@@ -31,16 +31,27 @@ public class Signs : MonoBehaviour
             _limit = false;
             _break = false;
 
+            if(_sign == SignType.intrusion)
+            {
+                Debug.Log("êNì¸à·îΩ");
+            }
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
             switch (_sign)
             {
-                case SignType.stop :
-                    StopCheck();
+                case SignType.stop:
+                    if (cve.GetSpeed() < 1) _stop = true;
                     break;
                 case SignType.limit:
-                    LimitCheck();
-                    break;
-                case SignType.intrusion:
-                    Debug.Log("êNì¸à·îΩ");
+                    if (cve.GetSpeed() > _speedLimit)
+                    {
+                        Debug.Log("ë¨ìxí¥âﬂ");
+                    }
                     break;
             }
         }
@@ -50,41 +61,13 @@ public class Signs : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            switch (_sign)
+            if (_sign == SignType.stop)
             {
-                case SignType.stop:
-                    if (!_stop)
-                    {
-                        Debug.Log("îÒí‚é~");
-                    }
-                    break;
-                case SignType.limit:
-                    if (_limit)
-                    {
-                        Debug.Log("ë¨ìxí¥âﬂ");
-                    }
-                    break;
+                if (!_stop)
+                {
+                    Debug.Log("îÒí‚é~");
+                }
             }
-
-            _break = true;
-        }
-    }
-
-    private void StopCheck()
-    {
-        while (!_stop)
-        {
-            if (cve.GetSpeed() < 1) _stop = true;
-            if (_break) break;
-        }
-    }
-
-    private void LimitCheck()
-    {
-        while (!_limit)
-        {
-            if (cve.GetSpeed() > _speedLimit) _limit = true;
-            if (_break) break;
         }
     }
 }
