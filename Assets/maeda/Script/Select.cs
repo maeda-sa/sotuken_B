@@ -35,6 +35,7 @@ public class Select : MonoBehaviour
     }
     private void Update()
     {
+
         for (int i = 0; i < bike.Count-1; i++)
         {
             bike[i].transform.Rotate(new Vector3(0, 50, 0) * Time.deltaTime);
