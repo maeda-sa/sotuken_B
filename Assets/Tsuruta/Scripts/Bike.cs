@@ -14,6 +14,7 @@ public class Bike : MonoBehaviour
     public float breake;
 
     private bool _back;
+    private bool _backLook;
 
     private Vector2 _look;
     private Vector2 _firstLook;
@@ -48,7 +49,7 @@ public class Bike : MonoBehaviour
     {
         float motor = maxMotorTorque * _velocity.z;
         float steering = maxSteeringAngle * _velocity.x;
-        _angle = new Vector3(_angle.x - _look.y, _angle.y + _look.x);
+        _angle = new Vector3(_angle.x - _look.y * 2, _angle.y + _look.x * 2);
 
         if(transform.rotation.z != 0)
         {
@@ -89,13 +90,13 @@ public class Bike : MonoBehaviour
                 axleInfo.Wheel.brakeTorque = 0;
             }
 
-            if (_angle.y <= _primary_angle.y - 30f)
+            if (_angle.y <= _primary_angle.y - 135f)
             {
-                _angle.y = _primary_angle.y - 30f;
+                _angle.y = _primary_angle.y - 135f;
             }
-            if (_angle.y >= _primary_angle.y + 30f)
+            if (_angle.y >= _primary_angle.y + 135f)
             {
-                _angle.y = _primary_angle.y + 30f;
+                _angle.y = _primary_angle.y + 135f;
             }
             if (_angle.x <= _primary_angle.x - 20f)
             {
@@ -106,7 +107,9 @@ public class Bike : MonoBehaviour
                 _angle.x = _primary_angle.x + 20f;
             }
 
-            if (_look.x == 0 && _look.y == 0) _angle = new Vector2(10, 0);
+            if (_look.x == 0 && _look.y == 0 && !_backLook) _angle = new Vector2(10, 0);
+
+            if (_backLook) _angle = new Vector2(10, 180);
 
             cm.gameObject.transform.localEulerAngles = _angle;
         }
@@ -131,7 +134,12 @@ public class Bike : MonoBehaviour
 
     public void OnLook(InputAction.CallbackContext context)
     {
-        _look = context.ReadValue<Vector2>();
+        if(!_backLook) _look = context.ReadValue<Vector2>();
+    }
+
+    public void OnBackLook(InputAction.CallbackContext context)
+    {
+        _backLook = context.ReadValueAsButton();
     }
 
     public void OnStop(InputAction.CallbackContext context)
