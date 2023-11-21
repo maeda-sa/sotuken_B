@@ -316,11 +316,33 @@
                 },
                 {
                     "name": "",
+                    "id": "ca1bf5ab-0b17-4d72-ab56-b02d90415588",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Accel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "52b8141a-8e81-489a-b145-16f679372037",
                     "path": "<DualShockGamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
+                    "action": "Back",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5bf5fee0-e3dd-4219-acad-2ba61dbe0aeb",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
                     "action": "Back",
                     "isComposite": false,
                     "isPartOfComposite": false

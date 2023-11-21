@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class OutputBikeSpeed : MonoBehaviour
 {
@@ -19,6 +20,10 @@ public class OutputBikeSpeed : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        speedText.text = Mathf.Abs(_ce.speed).ToString("00") + "km/h";
+        try
+        {
+            speedText.text = Mathf.Abs(_ce.speed).ToString("00") + "km/h";
+        }
+        catch(Exception e) { }
     }
 }

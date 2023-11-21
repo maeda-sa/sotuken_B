@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class BlowOff : MonoBehaviour
 {
+    [SerializeField] private NavMeshAgent _nma;
     [SerializeField]
     float impulse = 300;
 
@@ -27,6 +30,8 @@ public class BlowOff : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player" && isCollision == false)
         {
+            try { _nma.enabled = false; } catch(Exception e) { }
+
             //êÅÇ¡îÚÇŒÇ∑
             Vector3 playerVelocity = playerRigidBody.velocity;
             rigidBody.AddForce(playerVelocity * impulse, ForceMode.Impulse);
