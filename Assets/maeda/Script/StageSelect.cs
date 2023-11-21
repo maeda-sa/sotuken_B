@@ -22,6 +22,6 @@ public class StageSelect : MonoBehaviour
 
     public void game(int StageId)
     {
-        SceneManager.LoadScene("TetsutaScene");
+        SceneManager.LoadScene("Low Poly Road Pack Demo");
     }
 }
