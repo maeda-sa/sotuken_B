@@ -40,20 +40,9 @@ public class Select : MonoBehaviour
         {
             bike[i].transform.Rotate(new Vector3(0, 50, 0) * Time.deltaTime);
         }
-        bg = BGMSlider.value * 100;
-        se = SESlider.value * 100;
-        BGM.volume = BGMSlider.value;
-        SE.volume = SESlider.value;
-        BGMVol.text = $"{(int)bg}";
-        SEVol.text = $"{(int)se}";
+      
     }
 
-    private void OnDestroy()
-    {
-        PlayerPrefs.SetFloat("BgmVol", BGMSlider.value);
-        PlayerPrefs.SetFloat("SeVol", SESlider.value);
-        PlayerPrefs.Save();
-    }
     
     public void Option(GameObject item)
     {
