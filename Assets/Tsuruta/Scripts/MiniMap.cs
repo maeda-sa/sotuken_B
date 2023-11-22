@@ -18,13 +18,14 @@ public class MiniMap : MonoBehaviour
     [Header("車・歩行者用のアイコン")]
     [SerializeField] private GameObject _enemyPrefab;
 
+    [Header("ゴールの位置")]
+    [SerializeField] private GameObject _goalPos;
+
     private GameObject _obj;
 
     // Start is called before the first frame update
     void Start()
     {
-        
-
         for(int i = 0; i < _carwalkers.Count; i++)
         {
             _obj = Instantiate(_enemyPrefab, 
@@ -39,6 +40,7 @@ public class MiniMap : MonoBehaviour
     {
         _camera.position = new Vector3(_bike.transform.position.x, _camera.position.y, _bike.transform.position.z);
         _player.position = new Vector3(_bike.transform.position.x, _player.position.y, _bike.transform.position.z);
+        _goal.position = new Vector3(_goalPos.transform.position.x, _goal.position.y, _goalPos.transform.position.z);
 
         for (int i = 0; i < _carwalkers.Count; i++)
         {

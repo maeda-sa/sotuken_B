@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class CalcVelocityExample : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class CalcVelocityExample : MonoBehaviour
     private Vector3 _prevPosition;
     public float speed;
 
+    [SerializeField] private NavMeshObstacle navMesh;
     private Rigidbody _rb;
 
     private void Start()
@@ -36,6 +38,9 @@ public class CalcVelocityExample : MonoBehaviour
 
         // 前フレーム位置を更新
         _prevPosition = position;
+
+        if (speed > 1) navMesh.enabled = false;
+        else navMesh.enabled = true;
     }
 
     public float GetSpeed()

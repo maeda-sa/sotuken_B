@@ -6,6 +6,7 @@ using UnityEngine.AI;
 
 public class BlowOff : MonoBehaviour
 {
+    [SerializeField] private Walker _walker;
     [SerializeField] private NavMeshAgent _nma;
     [SerializeField]
     float impulse = 300;
@@ -28,9 +29,14 @@ public class BlowOff : MonoBehaviour
     //è’ìÀîªíË
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Player" && isCollision == false)
+        if (collision.gameObject.tag == "Player")
         {
-            try { _nma.enabled = false; } catch(Exception e) { }
+            try { 
+                _nma.enabled = false;
+                _walker.GetStop();
+            } catch(Exception e) { }
+
+            Debug.Log("ê⁄êG");
 
             //êÅÇ¡îÚÇŒÇ∑
             Vector3 playerVelocity = playerRigidBody.velocity;
