@@ -52306,7 +52306,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1258805239470623051, guid: 8f93fe82e3c2eaa45a9cddc41ab4523f, type: 3}
       propertyPath: breake
-      value: 10000
+      value: 20000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1258805239470623051, guid: 8f93fe82e3c2eaa45a9cddc41ab4523f, type: 3}
+      propertyPath: maxMotorTorque
+      value: 6000
       objectReference: {fileID: 0}
     - target: {fileID: 1460429485657365810, guid: 8f93fe82e3c2eaa45a9cddc41ab4523f, type: 3}
       propertyPath: speedText

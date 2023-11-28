@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Result : MonoBehaviour
 {
-    [SerializeField]private TextMeshProUGUI ten;
+    //[SerializeField]private TextMeshProUGUI ten;
 
 
     void Start()
