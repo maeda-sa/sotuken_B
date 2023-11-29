@@ -11,9 +11,13 @@ public class Walker : MonoBehaviour
     [SerializeField] private Rigidbody _rb;
 
     private bool _move = true;
+    private GameManager _gm;
 
     void Start()
     {
+        GameObject gm = GameObject.Find("GameManager");
+        _gm = gm.GetComponent<GameManager>();
+
         _agent.destination = _goal.position;
     }
 
@@ -35,5 +39,6 @@ public class Walker : MonoBehaviour
     public void GetStop()
     {
         _move = false;
+        _gm.WalkerViolation();
     }
 }

@@ -8,10 +8,13 @@ public class TrafficCheck : MonoBehaviour
 
     private int i;
 
+    private GameManager _gm;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        GameObject gm = GameObject.Find("GameManager");
+        _gm = gm.GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -28,8 +31,8 @@ public class TrafficCheck : MonoBehaviour
             {
                 if (_tcc[i].BlueCheck())
                 {
-                    i = 10;
                     _tcc[i].CheckReset();
+                    i = 10;
                     break;
                 }
             }
@@ -37,6 +40,7 @@ public class TrafficCheck : MonoBehaviour
             if(i != 10)
             {
                 Debug.Log("êMçÜñ≥éã");
+                _gm.TrafficViolation();
             }
         }
     }

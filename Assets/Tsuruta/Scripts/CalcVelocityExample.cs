@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -39,8 +40,12 @@ public class CalcVelocityExample : MonoBehaviour
         // 前フレーム位置を更新
         _prevPosition = position;
 
-        if (speed > 1) navMesh.enabled = false;
-        else navMesh.enabled = true;
+        try
+        {
+            if (speed > 1) navMesh.enabled = false;
+            else navMesh.enabled = true;
+        }
+        catch (Exception ex) { }
     }
 
     public float GetSpeed()

@@ -20,7 +20,14 @@ public class Signs : MonoBehaviour
     private bool _limit;
     private bool _break;
 
-    CalcVelocityExample cve;
+    private GameManager _gm;
+    private CalcVelocityExample cve;
+
+    private void Start()
+    {
+        GameObject gm = GameObject.Find("GameManager");
+        _gm = gm.GetComponent<GameManager>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -34,6 +41,7 @@ public class Signs : MonoBehaviour
             if(_sign == SignType.intrusion)
             {
                 Debug.Log("N“üˆá”½");
+                _gm.IntrusionViolation();
             }
         }
     }
@@ -51,6 +59,7 @@ public class Signs : MonoBehaviour
                     if (cve.GetSpeed() > _speedLimit)
                     {
                         Debug.Log("‘¬“x’´‰ß");
+                        _gm.SpeedViolation();
                     }
                     break;
             }
@@ -66,6 +75,7 @@ public class Signs : MonoBehaviour
                 if (!_stop)
                 {
                     Debug.Log("”ñ’âŽ~");
+                    _gm.StopViolation();
                 }
             }
         }

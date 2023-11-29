@@ -29,7 +29,7 @@ public class MiniMap : MonoBehaviour
         for(int i = 0; i < _carwalkers.Count; i++)
         {
             _obj = Instantiate(_enemyPrefab, 
-                new Vector3(_carwalkers[i].transform.position.x , 10001.5f, _carwalkers[i].transform.position.z
+                new Vector3(_carwalkers[i].transform.position.x , _carwalkers[i].transform.position.y, _carwalkers[i].transform.position.z
                 ), Quaternion.identity, transform);
             _enemys.Add(_obj);
         }
@@ -39,14 +39,19 @@ public class MiniMap : MonoBehaviour
     void Update()
     {
         _camera.position = new Vector3(_bike.transform.position.x, _camera.position.y, _bike.transform.position.z);
-        _player.position = new Vector3(_bike.transform.position.x, _player.position.y, _bike.transform.position.z);
-        _goal.position = new Vector3(_goalPos.transform.position.x, _goal.position.y, _goalPos.transform.position.z);
+        _player.position = new Vector3(_bike.transform.position.x, _bike.transform.position.y, _bike.transform.position.z);
+       // _goal.position = new Vector3(_goalPos.transform.position.x, _goal.position.y, _goalPos.transform.position.z);
 
         for (int i = 0; i < _carwalkers.Count; i++)
         {
-            Debug.Log(_enemys);
-            _enemys[i].transform.position = new Vector3(_carwalkers[i].transform.position.x, 10001.5f,
+            // Debug.Log(_enemys);
+            _enemys[i].transform.position = new Vector3(_carwalkers[i].transform.position.x, _enemys[i].transform.position.y,
                                                         _carwalkers[i].transform.position.z);
         }
+    }
+
+    public Transform GetGoal()
+    {
+        return _goalPos.transform;
     }
 }
