@@ -13,6 +13,8 @@ public class Option : MonoBehaviour
     [SerializeField] private TextMeshProUGUI BGMVol;
     [SerializeField] private TextMeshProUGUI SEVol;
     private double bg, se;
+    [SerializeField] private TMP_Dropdown ScreenSize;
+
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +32,18 @@ public class Option : MonoBehaviour
         SE.volume = SESlider.value;
         BGMVol.text = $"{(int)bg}";
         SEVol.text = $"{(int)se}";
+        switch (ScreenSize.value)
+        {
+            case 0:
+                Screen.SetResolution(1920,1080,FullScreenMode.FullScreenWindow);
+                break;
+            case 1:
+                Screen.SetResolution(1920, 1080, FullScreenMode.Windowed);
+                break;
+            case 2:
+                Screen.SetResolution(1280, 720, FullScreenMode.Windowed);
+                break;
+        }
     }
 
     private void OnDestroy()
