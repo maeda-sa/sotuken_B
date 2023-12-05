@@ -18,6 +18,7 @@ public class Bike : MonoBehaviour
 
     private bool _back;
     private bool _backLook;
+    private bool _goal = false;
 
     private Vector2 _look;
     private Vector2 _firstLook;
@@ -57,73 +58,78 @@ public class Bike : MonoBehaviour
     }
     public void FixedUpdate()
     {
-        float motor = maxMotorTorque * _velocity.z;
-        float steering = maxSteeringAngle * _velocity.x;
-        _angle = new Vector3(_angle.x - _look.y * 2, _angle.y + _look.x * 2);
-
-        if(transform.rotation.z != 0)
+        if (!_goal)
         {
-            Vector3 r = transform.localEulerAngles;
-            // Debug.Log("C³");
-            r.z = 0;
-            transform.localEulerAngles = r;
-        }
-        
+            float motor = maxMotorTorque * _velocity.z;
+            float steering = maxSteeringAngle * _velocity.x;
+            _angle = new Vector3(_angle.x - _look.y * 2, _angle.y + _look.x * 2);
 
-        foreach (AxleInfo axleInfo in axleInfos)
+            if (transform.rotation.z != 0)
+            {
+                Vector3 r = transform.localEulerAngles;
+                // Debug.Log("C³");
+                r.z = 0;
+                transform.localEulerAngles = r;
+            }
+
+
+            foreach (AxleInfo axleInfo in axleInfos)
+            {
+                if (axleInfo.steering)
+                {
+                    axleInfo.Wheel.steerAngle = steering;
+                    handle.localEulerAngles = new Vector3(0, steering, 0);
+                }
+                if (axleInfo.motor)
+                {
+                    axleInfo.Wheel.motorTorque = motor;
+                }
+                ApplyLocalPositionToVisuals(axleInfo.Wheel);
+
+                if (stop > 0 && axleInfo.steering)
+                {
+                    axleInfo.Wheel.brakeTorque = breake * stop;
+                }
+                if (stop == 0 && axleInfo.steering)
+                {
+                    axleInfo.Wheel.brakeTorque = 0;
+                }
+
+                if (_angle.y <= _primary_angle.y - 165f)
+                {
+                    _angle.y = _primary_angle.y - 165f;
+                }
+                if (_angle.y >= _primary_angle.y + 165f)
+                {
+                    _angle.y = _primary_angle.y + 165f;
+                }
+                if (_angle.x <= _primary_angle.x - 20f)
+                {
+                    _angle.x = _primary_angle.x - 20f;
+                }
+                if (_angle.x >= _primary_angle.x + 20f)
+                {
+                    _angle.x = _primary_angle.x + 20f;
+                }
+
+                // if (_look.x == 0 && _look.y == 0 && !_backLook) _angle = new Vector2(10, 0);
+
+                if (_backLook) _angle = new Vector2(10, 0);
+
+                cm.gameObject.transform.localEulerAngles = _angle;
+            }
+
+            foreach (GameObject pedal in pedals)
+            {
+                var rot = pedal.transform.localEulerAngles;
+                rot.z += _velocity.z;
+                pedal.transform.localEulerAngles = rot;
+            }
+        }
+        if (_goal)
         {
-            if (axleInfo.steering)
-            {
-                axleInfo.Wheel.steerAngle = steering;
-                handle.localEulerAngles = new Vector3(0, steering, 0);
-            }
-            if (axleInfo.motor)
-            {
-                axleInfo.Wheel.motorTorque = motor;
-            }
-            ApplyLocalPositionToVisuals(axleInfo.Wheel);
-
-            if (stop > 0 && axleInfo.steering)
-            {
-                axleInfo.Wheel.brakeTorque = breake * stop;
-            }
-            if (stop ==0 && axleInfo.steering)
-            {
-                axleInfo.Wheel.brakeTorque = 0;
-            }
-
-            if (_angle.y <= _primary_angle.y - 165f)
-            {
-                _angle.y = _primary_angle.y - 165f;
-            }
-            if (_angle.y >= _primary_angle.y + 165f)
-            {
-                _angle.y = _primary_angle.y + 165f;
-            }
-            if (_angle.x <= _primary_angle.x - 20f)
-            {
-                _angle.x = _primary_angle.x - 20f;
-            }
-            if (_angle.x >= _primary_angle.x + 20f)
-            {
-                _angle.x = _primary_angle.x + 20f;
-            }
-
-            // if (_look.x == 0 && _look.y == 0 && !_backLook) _angle = new Vector2(10, 0);
-
-            if (_backLook) _angle = new Vector2(10, 0);
-
-            cm.gameObject.transform.localEulerAngles = _angle;
+            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
         }
-
-        foreach (GameObject pedal in pedals)
-        {
-            var rot = pedal.transform.localEulerAngles;
-            rot.z += _velocity.z;
-            pedal.transform.localEulerAngles = rot;
-        }
-
-
     }
 
 
@@ -170,6 +176,11 @@ public class Bike : MonoBehaviour
 
         if (_back) back.SetActive(true);
         else back.SetActive(false);
+    }
+
+    public void OnGoal()
+    {
+        _goal = true;
     }
 }
 [System.Serializable]
