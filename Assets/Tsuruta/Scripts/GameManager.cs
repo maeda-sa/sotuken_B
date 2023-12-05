@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("©“]Ô")]
+    [SerializeField] private Bike _player;
+
     [Header("M†–³‹‚Ì‰ñ”")]
     [SerializeField] private int _trafficCount;
     [Header("ˆê’â~–³‹‚Ì‰ñ”")]
@@ -16,6 +19,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private bool _carCollision;
     [Header("•àsÒ‚Æ‚ÌÕ“Ë")]
     [SerializeField] private bool _walkerCollision;
+
+    [SerializeField] private ViolationWindow _vw;
 
     // Start is called before the first frame update
     void Start()
@@ -32,21 +37,25 @@ public class GameManager : MonoBehaviour
     public void TrafficViolation()
     {
         _trafficCount++;
+        _vw.Traffic();
     }
 
     public void StopViolation()
     {
         _stopCount++;
+        _vw.Stop();
     }
 
     public void SpeedViolation()
     {
         _speedCount++;
+        _vw.Speed();
     }
 
     public void IntrusionViolation()
     {
         _intrusionCount++;
+        _vw.Intrusion();
     }
 
     public void CarViolation()
@@ -57,5 +66,10 @@ public class GameManager : MonoBehaviour
     public void WalkerViolation()
     {
         _walkerCollision = true;
+    }
+
+    public void PlayerGoal()
+    {
+        _player.OnGoal();
     }
 }

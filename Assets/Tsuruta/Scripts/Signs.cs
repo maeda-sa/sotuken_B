@@ -19,6 +19,7 @@ public class Signs : MonoBehaviour
     private bool _stop;
     private bool _limit;
     private bool _break;
+    private bool _check;
 
     private GameManager _gm;
     private CalcVelocityExample cve;
@@ -54,12 +55,14 @@ public class Signs : MonoBehaviour
             {
                 case SignType.stop:
                     if (cve.GetSpeed() < 1) _stop = true;
+                    if (!_check) _stop = true;
                     break;
                 case SignType.limit:
-                    if (cve.GetSpeed() > _speedLimit)
+                    if (cve.GetSpeed() > _speedLimit && !_limit)
                     {
                         Debug.Log("‘¬“x’´‰ß");
                         _gm.SpeedViolation();
+                        _limit = true;
                     }
                     break;
             }
@@ -72,12 +75,20 @@ public class Signs : MonoBehaviour
         {
             if (_sign == SignType.stop)
             {
-                if (!_stop)
+                if (!_stop && _check)
                 {
                     Debug.Log("”ñ’âŽ~");
                     _gm.StopViolation();
                 }
             }
+
+            _check = false;
+            _limit = false;
         }
+    }
+
+    public void Check()
+    {
+        _check = true;
     }
 }
