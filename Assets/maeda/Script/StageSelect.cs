@@ -16,7 +16,7 @@ public class StageSelect : MonoBehaviour
         for(int i = 0; i < item.Count; i++)
         {
             stageName[i].text = item[i].stageName;
-            diff[i].text = $"“ïˆÕ“xF{item[i].diff}";
+            diff[i].text = $"“ïˆÕ“x : {item[i].diff}";
         }
     }
 

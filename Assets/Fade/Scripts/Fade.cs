@@ -27,6 +27,7 @@ using UnityEngine.Assertions;
 public class Fade : MonoBehaviour
 {
 	IFade fade;
+	[SerializeField] private bool feedout = false;
 
 	void Start ()
 	{
@@ -44,6 +45,12 @@ public class Fade : MonoBehaviour
 	void OnValidate ()
 	{
 		Init ();
+
+		if (feedout) //feedout==trueと同じ意味
+		{
+			cutoutRange = 1;
+		}
+
 		fade.Range = cutoutRange;
 	}
 
