@@ -61,11 +61,13 @@ public class GameManager : MonoBehaviour
     public void CarViolation()
     {
         _carCollision = true;
+        _player.OnGoal();
     }
 
     public void WalkerViolation()
     {
         _walkerCollision = true;
+        _player.OnGoal();
     }
 
     public void PlayerGoal()
