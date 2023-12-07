@@ -1187,7 +1187,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &764839843867344696
 Transform:
   m_ObjectHideFlags: 0
@@ -1587,6 +1587,7 @@ GameObject:
   - component: {fileID: 7435584143729270569}
   - component: {fileID: 9181327750934426910}
   - component: {fileID: 3124667082639164495}
+  - component: {fileID: 9222196463436313479}
   m_Layer: 0
   m_Name: TrafficLight_walk
   m_TagString: Untagged
@@ -1626,7 +1627,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6967514989309276969}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c43e30a118b99446bb4caf4e417f01d, type: 3}
   m_Name: 
@@ -1667,6 +1668,24 @@ CapsuleCollider:
   m_Height: 6.57
   m_Direction: 1
   m_Center: {x: 0, y: 1.38, z: 0}
+--- !u!114 &9222196463436313479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6967514989309276969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96705955c7bc9f642b25fdb298b65783, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _type: 0
+  time: 0
+  change: 30
+  _worker: 1
+  _workerRed: {fileID: 2230404582369467662}
+  _workerBlue: {fileID: 7082300966830374709}
 --- !u!1 &7082300966830374709
 GameObject:
   m_ObjectHideFlags: 0
@@ -1928,7 +1947,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &386099441486924773
 Transform:
   m_ObjectHideFlags: 0
@@ -1962,7 +1981,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &891243355393607617
 Transform:
   m_ObjectHideFlags: 0
