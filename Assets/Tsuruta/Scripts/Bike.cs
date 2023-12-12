@@ -8,13 +8,13 @@ public class Bike : MonoBehaviour
 {
     private GameManager _gm;
 
-    public Camera cm;
-    public Transform handle;
-    public List<AxleInfo> axleInfos;
-    public List<GameObject> pedals;
-    public float maxMotorTorque;
-    public float maxSteeringAngle;
-    public float breake;
+    [SerializeField] private Camera cm;
+    [SerializeField] private Transform handle;
+    [SerializeField] private List<AxleInfo> axleInfos;
+    [SerializeField] private List<GameObject> pedals;
+    [SerializeField] private float maxMotorTorque;
+    [SerializeField] private float maxSteeringAngle;
+    [SerializeField] private float breake;
 
     private bool _back;
     private bool _backLook;
@@ -27,10 +27,14 @@ public class Bike : MonoBehaviour
     private Vector3 _primary_angle;
     private float stop;
 
-    public GameObject brake;
-    public GameObject back;
-    public GameObject right;
-    public GameObject left;
+    [SerializeField] private GameObject brake;
+    [SerializeField] private GameObject back;
+    [SerializeField] private GameObject right;
+    [SerializeField] private GameObject left;
+
+    [SerializeField] private AudioSource _as;
+    [SerializeField] private AudioClip _pedalSe;
+    [SerializeField] private AudioClip _breakeSe;
 
     void Start()
     {
@@ -158,6 +162,7 @@ public class Bike : MonoBehaviour
     public void OnStop(InputAction.CallbackContext context)
     {
         stop = context.ReadValue<float>();
+        _as.PlayOneShot(_breakeSe);
 
         if (stop != 0) brake.SetActive(true);
         else brake.SetActive(false);
@@ -168,6 +173,7 @@ public class Bike : MonoBehaviour
         var value = context.ReadValue<float>();
         if (_back) value *= -1;
         _velocity = new Vector3(_velocity.x, 0, value);
+        _as.PlayOneShot(_pedalSe);
     }
 
     public void OnBack(InputAction.CallbackContext context)
