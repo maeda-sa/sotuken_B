@@ -91,4 +91,14 @@ public class Signs : MonoBehaviour
     {
         _check = true;
     }
+
+    public float Speed()
+    {
+        return _speedLimit;
+    }
+
+    public SignType Type()
+    {
+        return _sign;
+    }
 }
