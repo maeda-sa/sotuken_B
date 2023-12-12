@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/takahashi/Scenes/Select.unity
     guid: 0c3185366b72d9143b5a2b602995cc3f
+  - enabled: 1
+    path: Assets/Tsuruta/Scenes/TetsutaScene.unity
+    guid: 0eca0306983460c49aa00d275a6372d3
   m_configObjects: {}
