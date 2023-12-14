@@ -19,6 +19,7 @@ public class Bike : MonoBehaviour
     private bool _back;
     private bool _backLook;
     private bool _goal = false;
+    private bool _car = false;
 
     private Vector2 _look;
     private Vector2 _firstLook;
@@ -130,9 +131,20 @@ public class Bike : MonoBehaviour
                 pedal.transform.localEulerAngles = rot;
             }
         }
-        if (_goal)
+        if (_goal && !_car)
         {
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Car")
+        {
+            _car = true;
+            _gm.CarViolation();
+            GetComponent<Rigidbody>().centerOfMass = new Vector3(0, 0, 0);
+            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         }
     }
 
@@ -141,17 +153,23 @@ public class Bike : MonoBehaviour
     {
         var value = context.ReadValue<Vector2>();
 
-        _velocity = new Vector3(value.x, 0, _velocity.z);
+        if (!_goal)
+        {
+            _velocity = new Vector3(value.x, 0, _velocity.z);
 
-        if (value.x > 0) right.SetActive(true);
-        else right.SetActive(false);
-        if (value.x < 0) left.SetActive(true);
-        else left.SetActive(false);
+            if (value.x > 0) right.SetActive(true);
+            else right.SetActive(false);
+            if (value.x < 0) left.SetActive(true);
+            else left.SetActive(false);
+        }
     }
 
     public void OnLook(InputAction.CallbackContext context)
     {
-        if(!_backLook) _look = context.ReadValue<Vector2>();
+        if (!_goal)
+        {
+            if (!_backLook) _look = context.ReadValue<Vector2>();
+        }
     }
 
     public void OnBackLook(InputAction.CallbackContext context)
@@ -161,32 +179,46 @@ public class Bike : MonoBehaviour
 
     public void OnStop(InputAction.CallbackContext context)
     {
-        stop = context.ReadValue<float>();
-        _as.PlayOneShot(_breakeSe);
+        if (!_goal)
+        {
+            stop = context.ReadValue<float>();
+            _as.PlayOneShot(_breakeSe);
 
-        if (stop != 0) brake.SetActive(true);
-        else brake.SetActive(false);
+            if (stop != 0) brake.SetActive(true);
+            else brake.SetActive(false);
+        }
     }
 
     public void OnAccel(InputAction.CallbackContext context)
     {
-        var value = context.ReadValue<float>();
-        if (_back) value *= -1;
-        _velocity = new Vector3(_velocity.x, 0, value);
-        _as.PlayOneShot(_pedalSe);
+        if (!_goal)
+        {
+            var value = context.ReadValue<float>();
+            if (_back) value *= -1;
+            _velocity = new Vector3(_velocity.x, 0, value);
+            _as.PlayOneShot(_pedalSe);
+        }
     }
 
     public void OnBack(InputAction.CallbackContext context)
     {
-        _back = context.ReadValueAsButton();
+        if (!_goal)
+        {
+            _back = context.ReadValueAsButton();
 
-        if (_back) back.SetActive(true);
-        else back.SetActive(false);
+            if (_back) back.SetActive(true);
+            else back.SetActive(false);
+        }
     }
 
     public void OnGoal()
     {
         _goal = true;
+    }
+
+    public void OffGoal()
+    {
+        _goal = false;
     }
 }
 [System.Serializable]

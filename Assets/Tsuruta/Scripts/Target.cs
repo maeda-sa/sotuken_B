@@ -54,8 +54,8 @@ public class Target : MonoBehaviour
         spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, outRangeAlpha);
         var centerPos = new Vector3(minimapCamera.transform.position.x, defaultPosY, minimapCamera.transform.position.z);
         var offset = iconPos - centerPos;
-        Debug.Log(offset);
-        Debug.Log(centerPos + Vector3.ClampMagnitude(offset, minimapRangeRadius - rangeRadiusOffset));
+        // Debug.Log(offset);
+        // Debug.Log(centerPos + Vector3.ClampMagnitude(offset, minimapRangeRadius - rangeRadiusOffset));
         transform.position = centerPos + Vector3.ClampMagnitude(offset, minimapRangeRadius - rangeRadiusOffset);
     }
 
