@@ -125,7 +125,7 @@ public class MiniMap : MonoBehaviour
         _camera.position = new Vector3(_bike.transform.position.x, _camera.position.y, _bike.transform.position.z);
         _player.position = new Vector3(_bike.transform.position.x, _bike.transform.position.y, _bike.transform.position.z);
         _player.rotation = Quaternion.Euler(90, _bike.transform.eulerAngles.y, 0);
-        Debug.Log(_bike.transform.rotation.y);
+        // Debug.Log(_bike.transform.rotation.y);
        // _goal.position = new Vector3(_goalPos.transform.position.x, _goal.position.y, _goalPos.transform.position.z);
 
         for (int i = 0; i < _carwalkers.Count; i++)
