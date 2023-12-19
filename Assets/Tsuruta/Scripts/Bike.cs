@@ -8,13 +8,14 @@ public class Bike : MonoBehaviour
 {
     private GameManager _gm;
 
-    [SerializeField] private Camera cm;
-    [SerializeField] private Transform handle;
-    [SerializeField] private List<AxleInfo> axleInfos;
-    [SerializeField] private List<GameObject> pedals;
-    [SerializeField] private float maxMotorTorque;
-    [SerializeField] private float maxSteeringAngle;
-    [SerializeField] private float breake;
+    [SerializeField] private Pause _pause;
+    [SerializeField] private Camera _cm;
+    [SerializeField] private Transform _handle;
+    [SerializeField] private List<AxleInfo> _axleInfos;
+    [SerializeField] private List<GameObject> _pedals;
+    [SerializeField] private float _maxMotorTorque;
+    [SerializeField] private float _maxSteeringAngle;
+    [SerializeField] private float _breake;
 
     private bool _back;
     private bool _backLook;
@@ -42,8 +43,8 @@ public class Bike : MonoBehaviour
         GameObject gm = GameObject.Find("GameManager");
         _gm = gm.GetComponent<GameManager>();
 
-        _angle = cm.gameObject.transform.localEulerAngles;
-        _primary_angle = cm.gameObject.transform.localEulerAngles;
+        _angle = _cm.gameObject.transform.localEulerAngles;
+        _primary_angle = _cm.gameObject.transform.localEulerAngles;
         GetComponent<Rigidbody>().centerOfMass = new Vector3(0, -3f, 1f);
     }
 
@@ -65,8 +66,8 @@ public class Bike : MonoBehaviour
     {
         if (!_goal)
         {
-            float motor = maxMotorTorque * _velocity.z;
-            float steering = maxSteeringAngle * _velocity.x;
+            float motor = _maxMotorTorque * _velocity.z;
+            float steering = _maxSteeringAngle * _velocity.x;
             _angle = new Vector3(_angle.x - _look.y * 2, _angle.y + _look.x * 2);
 
             if (transform.rotation.z != 0)
@@ -78,12 +79,12 @@ public class Bike : MonoBehaviour
             }
 
 
-            foreach (AxleInfo axleInfo in axleInfos)
+            foreach (AxleInfo axleInfo in _axleInfos)
             {
                 if (axleInfo.steering)
                 {
                     axleInfo.Wheel.steerAngle = steering;
-                    handle.localEulerAngles = new Vector3(0, steering, 0);
+                    _handle.localEulerAngles = new Vector3(0, steering, 0);
                 }
                 if (axleInfo.motor)
                 {
@@ -93,7 +94,7 @@ public class Bike : MonoBehaviour
 
                 if (stop > 0 && axleInfo.steering)
                 {
-                    axleInfo.Wheel.brakeTorque = breake * stop;
+                    axleInfo.Wheel.brakeTorque = _breake * stop;
                 }
                 if (stop == 0 && axleInfo.steering)
                 {
@@ -121,10 +122,10 @@ public class Bike : MonoBehaviour
 
                 if (_backLook) _angle = new Vector2(10, 0);
 
-                cm.gameObject.transform.localEulerAngles = _angle;
+                _cm.gameObject.transform.localEulerAngles = _angle;
             }
 
-            foreach (GameObject pedal in pedals)
+            foreach (GameObject pedal in _pedals)
             {
                 var rot = pedal.transform.localEulerAngles;
                 rot.z += _velocity.z;
@@ -142,6 +143,7 @@ public class Bike : MonoBehaviour
         if(collision.gameObject.tag == "Car")
         {
             _car = true;
+            _pause.NoPause();
             _gm.CarViolation();
             GetComponent<Rigidbody>().centerOfMass = new Vector3(0, 0, 0);
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
