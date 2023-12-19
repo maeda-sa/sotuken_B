@@ -74,4 +74,24 @@ public class GameManager : MonoBehaviour
     {
         _player.OnGoal();
     }
+
+    public int TrafficCountget()
+    {
+        return _trafficCount;
+    }
+    
+    public int stopCountget()
+    {
+        return _stopCount;
+    }
+
+    public int speedCountget()
+    {
+        return _speedCount;
+    }
+
+    public int intrusionCountget()
+    {
+        return _intrusionCount;
+    }
 }
