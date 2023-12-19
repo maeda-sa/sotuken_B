@@ -36,6 +36,7 @@ public class Bike : MonoBehaviour
     [SerializeField] private AudioSource _as;
     [SerializeField] private AudioClip _pedalSe;
     [SerializeField] private AudioClip _breakeSe;
+    private GameManager GM;
 
     void Start()
     {
@@ -211,9 +212,12 @@ public class Bike : MonoBehaviour
         }
     }
 
-    public void OnGoal()
+    public IEnumerator  OnGoal()
     {
         _goal = true;
+        yield return new WaitForSeconds(5);
+
+
     }
 
     public void OffGoal()
