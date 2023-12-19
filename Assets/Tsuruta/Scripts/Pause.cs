@@ -61,6 +61,12 @@ public class Pause : MonoBehaviour
                 else _icons[i].GetComponent<Image>().enabled = true;
             }
 
+            for (int i = 0; i < _yesno.Count; i++)
+            {
+                if (i == _checkCount) _yesno[i].GetComponent<Image>().enabled = true;
+                else _yesno[i].GetComponent<Image>().enabled = false;
+            }
+
             if (_input_pause.WasPressedThisFrame())
             {
                 if (_pauseCheck && !_map && !_end)
@@ -252,5 +258,15 @@ public class Pause : MonoBehaviour
     public void NoPause()
     {
         _pause = false;
+    }
+
+    public void Icon(int _count)
+    {
+        _iconCount = _count;
+    }
+
+    public void Check(int _count)
+    {
+        _checkCount = _count;
     }
 }
