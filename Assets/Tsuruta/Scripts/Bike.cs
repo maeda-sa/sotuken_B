@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Bike : MonoBehaviour
 {
@@ -134,10 +135,13 @@ public class Bike : MonoBehaviour
                 rot.z += _velocity.z;
                 pedal.transform.localEulerAngles = rot;
             }
+
         }
         if (_goal && !_car)
         {
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
+            
+            
         }
     }
 
@@ -216,12 +220,10 @@ public class Bike : MonoBehaviour
         }
     }
 
-    public IEnumerator  OnGoal()
+    public void  OnGoal()
     {
         _goal = true;
-        yield return new WaitForSeconds(5);
-
-
+        SceneManager.LoadScene("Result");
     }
 
     public void OffGoal()

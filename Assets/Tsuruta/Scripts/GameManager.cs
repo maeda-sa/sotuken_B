@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -31,7 +32,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(_carCollision || _walkerCollision)
+        {
+            SceneManager.LoadScene("GameOver");
+        }
     }
 
     public void TrafficViolation()
@@ -75,23 +79,12 @@ public class GameManager : MonoBehaviour
         _player.OnGoal();
     }
 
-    public int TrafficCountget()
+    private void OnDestroy()
     {
-        return _trafficCount;
-    }
-    
-    public int stopCountget()
-    {
-        return _stopCount;
-    }
-
-    public int speedCountget()
-    {
-        return _speedCount;
-    }
-
-    public int intrusionCountget()
-    {
-        return _intrusionCount;
+        PlayerPrefs.SetInt("TC", _trafficCount);
+        PlayerPrefs.SetInt("stop", _stopCount);
+        PlayerPrefs.SetInt("speed", _speedCount);
+        PlayerPrefs.SetInt("IC", _intrusionCount);
+        PlayerPrefs.Save();
     }
 }
