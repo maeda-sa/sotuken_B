@@ -71,6 +71,8 @@ public class Bike : MonoBehaviour
             float steering = _maxSteeringAngle * _velocity.x;
             _angle = new Vector3(_angle.x - _look.y * 2, _angle.y + _look.x * 2);
 
+            Debug.Log(motor);
+
             if (transform.rotation.z != 0)
             {
                 Vector3 r = transform.localEulerAngles;
