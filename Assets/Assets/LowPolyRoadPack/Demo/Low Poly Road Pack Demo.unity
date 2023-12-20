@@ -45375,7 +45375,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1868375326
 AudioSource:
@@ -51238,9 +51238,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 344318724473146655, guid: f3c98ccfbc7aded48a10772dcb131728, type: 3}
+      propertyPath: _map
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 344318724473146655, guid: f3c98ccfbc7aded48a10772dcb131728, type: 3}
       propertyPath: _bike
       value: 
       objectReference: {fileID: 6955949752768240355}
+    - target: {fileID: 344318724473146655, guid: f3c98ccfbc7aded48a10772dcb131728, type: 3}
+      propertyPath: _camera
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 344318724473146655, guid: f3c98ccfbc7aded48a10772dcb131728, type: 3}
       propertyPath: _goalPos
       value: 
@@ -51261,6 +51269,10 @@ PrefabInstance:
       propertyPath: _carwalkers.Array.data[0]
       value: 
       objectReference: {fileID: 727292574}
+    - target: {fileID: 1326685243174027094, guid: f3c98ccfbc7aded48a10772dcb131728, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2309522167920150177, guid: f3c98ccfbc7aded48a10772dcb131728, type: 3}
       propertyPath: m_Name
       value: Map
@@ -51871,7 +51883,7 @@ PrefabInstance:
       objectReference: {fileID: 727292574}
     - target: {fileID: 2957058225456180792, guid: 6d8d209d9bb518b4ba3cbe538f0814d9, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 2957058225456180792, guid: 6d8d209d9bb518b4ba3cbe538f0814d9, type: 3}
       propertyPath: m_LocalPosition.x

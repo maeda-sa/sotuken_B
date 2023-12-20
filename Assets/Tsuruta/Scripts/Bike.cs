@@ -146,6 +146,7 @@ public class Bike : MonoBehaviour
         if(collision.gameObject.tag == "Car")
         {
             _car = true;
+            _goal = true;
             _pause.NoPause();
             _gm.CarViolation();
             GetComponent<Rigidbody>().centerOfMass = new Vector3(0, 0, 0);

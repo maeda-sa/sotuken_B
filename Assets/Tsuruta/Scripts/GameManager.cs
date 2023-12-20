@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    private GameState _gs;
+
     [Header("é©ì]é‘")]
     [SerializeField] private Bike _player;
 
@@ -20,12 +22,15 @@ public class GameManager : MonoBehaviour
     [Header("ï‡çsé“Ç∆ÇÃè’ìÀ")]
     [SerializeField] private bool _walkerCollision;
 
+    [SerializeField] private GameObject _goal;
     [SerializeField] private ViolationWindow _vw;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        _gs = GameObject.Find("GameState").GetComponent<GameState>();
+
+        _goal.gameObject.transform.position = _gs.pos;
     }
 
     // Update is called once per frame
