@@ -12,7 +12,7 @@ namespace Asset.maeda
 
         private void Start()
         {
-            guilt.text = "‚¨‘O‚Ìß‚ğ”‚¦‚ë";
+            guilt.text = "‰ß¸’v€ß\náŠQ‚ğ—^‚¦‚½ê‡A30–œ‰~ˆÈ‰º‚Ì”±‹à–”‚Í‰È—¿\n€–S‚³‚¹‚Ä‚µ‚Ü‚Á‚½ê‡‚Í50–œ‰~ˆÈ‰º‚Ì”±‹à‚Æ‚È‚Á‚Ä‚¢‚éB";
 
         }
 

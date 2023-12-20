@@ -15,15 +15,15 @@ public class Result :MonoBehaviour
 
     void Start()
     {
-        TC = GM.TrafficCountget();
-        stop = GM.stopCountget();
-        speed = GM.speedCountget();
-        IC = GM.intrusionCountget();
+        TC = PlayerPrefs.GetInt("TC", 0);
+        stop = PlayerPrefs.GetInt("stop", 0);
+        speed = PlayerPrefs.GetInt("speed", 0);
+        IC = PlayerPrefs.GetInt("IC",0);
         TrafCheck();
         StopCheck();
         SpeedCheck();
         IntrusionCheck();
-        text.text += $"合計：{sum + 100}";
+        text.text += $"合計:{sum + 100}";
     }
 
     // Update is called once per frame
@@ -37,7 +37,7 @@ public class Result :MonoBehaviour
         if (TC > 0)
         {
             dis[0] = true;
-            text.text += $"信号無視：{TC * -10}\n";
+            text.text += $"信号無視:{TC * -10}\n";
             sum += TC * -10;
         }
     }
@@ -47,7 +47,7 @@ public class Result :MonoBehaviour
         if (stop > 0)
         {
             dis[1] = true;
-            text.text += $"一時不停止：{stop * -10}\n";
+            text.text += $"一時不停止:{stop * -10}\n";
             sum += stop * -10;
         }
     }
@@ -57,7 +57,7 @@ public class Result :MonoBehaviour
         if (speed > 0)
         {
             dis[2] = true;
-            text.text += $"速度違反：{speed * -5}\n";
+            text.text += $"速度違反:{speed * -5}\n";
             sum += speed * -5;
         }
     }
@@ -67,7 +67,7 @@ public class Result :MonoBehaviour
         if (IC > 0)
         {
             dis[3] = true;
-            text.text += $"進入禁止：{IC * -5}\n";
+            text.text += $"進入禁止:{IC * -5}\n";
             sum += IC * -5;
         }
     }

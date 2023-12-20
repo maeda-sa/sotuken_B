@@ -18,6 +18,7 @@ public class Goal : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             _gm.PlayerGoal();
+            Initiate.Fade("Result", Color.black, 1.0f); ;
         }
     }
 }

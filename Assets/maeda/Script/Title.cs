@@ -18,7 +18,7 @@ public class Title : MonoBehaviour
 
         if (Input.anyKeyDown)
         {
-            SceneManager.LoadScene(SceneName);
+            Initiate.Fade(SceneName, Color.black, 1.0f);
         }
         start.color = GetAlphaColor(start.color);
     }
