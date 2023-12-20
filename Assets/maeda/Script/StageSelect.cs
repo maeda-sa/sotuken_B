@@ -22,6 +22,6 @@ public class StageSelect : MonoBehaviour
 
     public void game(int StageId)
     {
-        SceneManager.LoadScene("Low Poly Road Pack Demo");
+        Initiate.Fade("Low Poly Road Pack Demo", Color.black, 1.0f); 
     }
 }

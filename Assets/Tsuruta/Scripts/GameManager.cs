@@ -32,10 +32,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(_carCollision || _walkerCollision)
-        {
-            SceneManager.LoadScene("GameOver");
-        }
+       
     }
 
     public void TrafficViolation()

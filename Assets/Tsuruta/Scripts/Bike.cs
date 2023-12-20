@@ -223,7 +223,7 @@ public class Bike : MonoBehaviour
     public void  OnGoal()
     {
         _goal = true;
-        SceneManager.LoadScene("Result");
+        
     }
 
     public void OffGoal()
