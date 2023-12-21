@@ -8,17 +8,21 @@ namespace Asset.maeda
 {
     public class GameOver : MonoBehaviour
     {
+        private GameState _gs;
         [SerializeField]TextMeshProUGUI guilt;
 
         private void Start()
         {
-            guilt.text = "‰ß¸’v€ß\náŠQ‚ğ—^‚¦‚½ê‡A30–œ‰~ˆÈ‰º‚Ì”±‹à–”‚Í‰È—¿\n€–S‚³‚¹‚Ä‚µ‚Ü‚Á‚½ê‡‚Í50–œ‰~ˆÈ‰º‚Ì”±‹à‚Æ‚È‚Á‚Ä‚¢‚éB";
+            _gs = GameObject.Find("GameState").GetComponent<GameState>();
+            guilt.text = "‚¨‘O‚Ìß‚ğ”‚¦‚ë";
 
         }
 
         public  void SceneChange(string SceneName)
         {
-            SceneManager.LoadScene(SceneName);
+            _gs._carCollision = false;
+            _gs._walkerCollision = false;
+            Initiate.Fade(SceneName, Color.black, 1.0f);
         }
     }
 }

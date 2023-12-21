@@ -57,4 +57,24 @@ public class GameState : MonoBehaviour
         pos = _pos[_goal];
         Initiate.Fade("", Color.black, 1.0f);
     }
+
+    public int TrafficCountget()
+    {
+        return _trafficCount;
+    }
+
+    public int stopCountget()
+    {
+        return _stopCount;
+    }
+
+    public int speedCountget()
+    {
+        return _speedCount;
+    }
+
+    public int intrusionCountget()
+    {
+        return _intrusionCount;
+    }
 }

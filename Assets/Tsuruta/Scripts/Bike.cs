@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 
 public class Bike : MonoBehaviour
 {
@@ -72,8 +71,6 @@ public class Bike : MonoBehaviour
             float steering = _maxSteeringAngle * _velocity.x;
             _angle = new Vector3(_angle.x - _look.y * 2, _angle.y + _look.x * 2);
 
-            Debug.Log(motor);
-
             if (transform.rotation.z != 0)
             {
                 Vector3 r = transform.localEulerAngles;
@@ -135,13 +132,10 @@ public class Bike : MonoBehaviour
                 rot.z += _velocity.z;
                 pedal.transform.localEulerAngles = rot;
             }
-
         }
         if (_goal && !_car)
         {
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
-            
-            
         }
     }
 
@@ -224,7 +218,6 @@ public class Bike : MonoBehaviour
     public void  OnGoal()
     {
         _goal = true;
-        
     }
 
     public void OffGoal()
