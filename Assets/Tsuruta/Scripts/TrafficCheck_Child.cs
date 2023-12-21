@@ -9,15 +9,15 @@ public class TrafficCheck_Child : MonoBehaviour
     [SerializeField] private TrafficLight _light;
 
     private float _carSpeed = 50;
-    private bool _blue;
+    private bool _red;
 
     private void Update()
     {
         try
         {
-            if (_light.CarCheck() == LightType.red)
+            if (_light.CarCheck() != LightType.red)
             {
-                _blue = false;
+                _red = false;
             }
         }
         catch(Exception e) { }
@@ -25,9 +25,9 @@ public class TrafficCheck_Child : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(_light.CarCheck() == LightType.blue && other.gameObject.tag == "Player")
+        if(_light.CarCheck() == LightType.red && other.gameObject.tag == "Player")
         {
-            _blue = true;
+            _red = true;
         }
     }
 
@@ -52,13 +52,13 @@ public class TrafficCheck_Child : MonoBehaviour
         } catch(Exception e) { }
     }
 
-    public bool BlueCheck()
+    public bool RedCheck()
     {
-        return _blue;
+        return _red;
     }
 
     public void CheckReset()
     {
-        _blue = false;
+        _red = false;
     }
 }

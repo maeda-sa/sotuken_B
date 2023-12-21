@@ -9424,6 +9424,59 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 46908de83c0ca15498206df2dc007ea0, type: 3}
   m_PrefabInstance: {fileID: 412290289}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &417366941
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 417366943}
+  - component: {fileID: 417366942}
+  m_Layer: 0
+  m_Name: GameState
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &417366942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417366941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efd5280047a49974182b043504a65492, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _trafficCount: 0
+  _stopCount: 0
+  _speedCount: 0
+  _intrusionCount: 0
+  _carCollision: 0
+  _walkerCollision: 0
+  _pos:
+  - {x: 442.1, y: 37.78, z: -1238}
+  pos: {x: 0, y: 0, z: 0}
+--- !u!4 &417366943
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417366941}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &419497302
 GameObject:
   m_ObjectHideFlags: 0
@@ -45361,6 +45414,7 @@ MonoBehaviour:
   _intrusionCount: 0
   _carCollision: 0
   _walkerCollision: 0
+  _goal: {fileID: 0}
   _vw: {fileID: 6290482730824293214}
 --- !u!4 &1868375325
 Transform:
@@ -51691,6 +51745,10 @@ PrefabInstance:
       propertyPath: right
       value: 
       objectReference: {fileID: 1317137274127490419}
+    - target: {fileID: 3380432952082814374, guid: db850f63865c14f4bbea96d09302eb1b, type: 3}
+      propertyPath: _maxSteeringAngle
+      value: 45
+      objectReference: {fileID: 0}
     - target: {fileID: 3615033261102568051, guid: db850f63865c14f4bbea96d09302eb1b, type: 3}
       propertyPath: m_Name
       value: Bike_ver2.0

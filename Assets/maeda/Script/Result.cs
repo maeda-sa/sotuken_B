@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 //public record ResultSceneParameter(GameManager Game,int StopCount ,int SpeedCount ,int IntrusionCount) : SceneParameterBase;
 public class Result :MonoBehaviour
 {
-    private GameManager GM;
+    private GameState _gs;
     private int TC = 0,stop = 0, IC = 0 , speed = 0;
     [SerializeField] private TextMeshProUGUI text;
     private bool[] dis = { false, false, false, false };
@@ -15,10 +15,12 @@ public class Result :MonoBehaviour
 
     void Start()
     {
-        TC = GM.TrafficCountget();
-        stop = GM.stopCountget();
-        speed = GM.speedCountget();
-        IC = GM.intrusionCountget();
+        _gs = GameObject.Find("GameState").GetComponent<GameState>();
+
+        TC = _gs.TrafficCountget();
+        stop = _gs.stopCountget();
+        speed = _gs.speedCountget();
+        IC = _gs.intrusionCountget();
         TrafCheck();
         StopCheck();
         SpeedCheck();
@@ -74,6 +76,10 @@ public class Result :MonoBehaviour
 
     public void Chenge(string SceneName)
     {
-        SceneManager.LoadScene(SceneName);
+        _gs._trafficCount = 0;
+        _gs._stopCount = 0;
+        _gs._speedCount = 0;
+        _gs._intrusionCount = 0;
+        Initiate.Fade(SceneName, Color.black, 1.0f);
     }
 }

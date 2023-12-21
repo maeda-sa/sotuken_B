@@ -29,18 +29,13 @@ public class TrafficCheck : MonoBehaviour
         {
             for(i = 0; i < _tcc.Count; i++)
             {
-                if (_tcc[i].BlueCheck())
+                if (_tcc[i].RedCheck())
                 {
                     _tcc[i].CheckReset();
-                    i = 10;
+                    Debug.Log("M†–³Ž‹");
+                    _gm.TrafficViolation();
                     break;
                 }
-            }
-
-            if(i != 10)
-            {
-                Debug.Log("M†–³Ž‹");
-                _gm.TrafficViolation();
             }
         }
     }
