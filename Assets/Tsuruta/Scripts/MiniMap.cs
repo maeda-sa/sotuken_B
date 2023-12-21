@@ -133,15 +133,15 @@ public class MiniMap : MonoBehaviour
         // Debug.Log(_bike.transform.rotation.y);
         if(_map) _goal.position = new Vector3(_goalPos.transform.position.x, _goalPos.transform.position.y + 5, _goalPos.transform.position.z);
 
-        for (int i = 0; i < _carwalkers.Count; i++)
-        {
-            // Debug.Log(_enemys);
-            _enemys[i].transform.position = new Vector3(_carwalkers[i].transform.position.x, _enemys[i].transform.position.y,
-                                                        _carwalkers[i].transform.position.z);
-        }
-
         try
         {
+            for (int i = 0; i < _carwalkers.Count; i++)
+            {
+                // Debug.Log(_enemys);
+                _enemys[i].transform.position = new Vector3(_carwalkers[i].transform.position.x, _enemys[i].transform.position.y,
+                                                            _carwalkers[i].transform.position.z);
+            }
+
             for (int i = 0; i < _traffics.Count; i++)
             {
                 TrafficLight tl = _traffics[i].GetComponent<TrafficLight>();

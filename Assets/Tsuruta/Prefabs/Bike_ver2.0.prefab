@@ -877,7 +877,7 @@ MonoBehaviour:
   - {fileID: 3283655174484740937}
   - {fileID: 1993005009124162036}
   _maxMotorTorque: 6000
-  _maxSteeringAngle: 75
+  _maxSteeringAngle: 45
   _breake: 50000
   brake: {fileID: 0}
   back: {fileID: 0}

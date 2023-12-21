@@ -67,18 +67,27 @@ public class GameManager : MonoBehaviour
     public void CarViolation()
     {
         _carCollision = true;
+        _gs._carCollision = true;
         _player.OnGoal();
+        Initiate.Fade("GameOver", Color.red, 0.25f);
     }
 
     public void WalkerViolation()
     {
         _walkerCollision = true;
+        _gs._walkerCollision = true;
         _player.OnGoal();
+        Initiate.Fade("GameOver", Color.black, 0.25f);
     }
 
     public void PlayerGoal()
     {
         _player.OnGoal();
+        _gs._trafficCount = _trafficCount;
+        _gs._stopCount = _stopCount;
+        _gs._speedCount = _speedCount;
+        _gs._intrusionCount = _intrusionCount;
+        Initiate.Fade("Result", Color.white, 0.5f);
     }
 
     private void OnDestroy()
