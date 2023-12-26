@@ -1191,7 +1191,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &158279237
@@ -10267,7 +10267,7 @@ MonoBehaviour:
   - {fileID: 777976443}
   item:
   - stageId: 1
-    stageName: "\u7DD1\u306E\u5E83\u5834"
+    stageName: "\u770C\u6C11\u4F1A\u9928"
     diff: "\u666E\u901A"
   - stageId: 2
     stageName: "\u77F3\u5272\u685C"
