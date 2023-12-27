@@ -140,7 +140,10 @@ public class Select : MonoBehaviour
 
         if (_input_check.WasPressedThisFrame())
         {
-            if (!_setObj.activeSelf) Option(_setObj);
+            if (!_setObj.activeSelf)
+            {
+                Option(_setObj);
+            }
         }
 
         if (_input_cancel.WasPressedThisFrame())
@@ -184,13 +187,19 @@ public class Select : MonoBehaviour
     {
         if(!isStop)
         {
-            if (_length == 2 || _width == 2) EndGame();
+            if (_length == 2 || _width == 2)
+            {
+                SE.Play();
+                EndGame();
+            }
+            else
+            {
+                selectUi.SetActive(false);
 
-            selectUi.SetActive(false);
-           
-            SE.Play();
-            item.SetActive(true);
-            isStop = true;
+                SE.Play();
+                item.SetActive(true);
+                isStop = true;
+            }
         }
     }
 
@@ -209,8 +218,25 @@ public class Select : MonoBehaviour
     public void EndGame()
     {
         if (!isStop)
+        {
+            Debug.Log("アッセンブル");
             //UnityEditor.EditorApplication.isPlaying = false;
             Application.Quit();
+        }
+    }
+
+    public void Length(int i)
+    {
+        _length = i;
+        _width = -10;
+        if (_length == 2) _width = 2;
+    }
+
+    public void Width(int i)
+    {
+        _width = i;
+        _length = -10;
+        if (_width == 2) _length = 2;
     }
 
 }
