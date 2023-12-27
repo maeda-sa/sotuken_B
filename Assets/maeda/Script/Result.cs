@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 //public record ResultSceneParameter(GameManager Game,int StopCount ,int SpeedCount ,int IntrusionCount) : SceneParameterBase;
 public class Result :MonoBehaviour
@@ -11,7 +13,13 @@ public class Result :MonoBehaviour
     private int TC = 0,stop = 0, IC = 0 , speed = 0;
     [SerializeField] private TextMeshProUGUI text;
     private bool[] dis = { false, false, false, false };
-    private int sum;
+    private int sum, _count;
+
+    [SerializeField] private List<GameObject> _button;
+    [SerializeField] private PlayerInput _player;
+    private InputAction _input_right;
+    private InputAction _input_left;
+    private InputAction _input_check;
 
     void Start()
     {
@@ -26,12 +34,43 @@ public class Result :MonoBehaviour
         SpeedCheck();
         IntrusionCheck();
         text.text += $"çáåvÅF{sum + 100}";
+
+        _input_right = _player.actions["Right"];
+        _input_left = _player.actions["Left"];
+        _input_check = _player.actions["Check"];
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        for (int i = 0; i < _button.Count; i++)
+        {
+            if (i == _count) _button[i].GetComponent<Image>().enabled = false;
+            else _button[i].GetComponent<Image>().enabled = true;
+        }
+
+        if (_input_right.WasPressedThisFrame())
+        {
+            if(_count < _button.Count - 1) _count++;
+        }
+
+        if (_input_left.WasPressedThisFrame())
+        {
+            if (_count > 0) _count--;
+        }
+
+        if (_input_check.WasPressedThisFrame())
+        {
+            switch (_count)
+            {
+                case 0:
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    break;
+            }
+        }
     }
 
     public void TrafCheck()
