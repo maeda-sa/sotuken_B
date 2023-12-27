@@ -15,11 +15,14 @@ public class Result :MonoBehaviour
     private bool[] dis = { false, false, false, false };
     private int sum, _count;
 
+    [SerializeField] private GameObject _window;
     [SerializeField] private List<GameObject> _button;
     [SerializeField] private PlayerInput _player;
     private InputAction _input_right;
     private InputAction _input_left;
     private InputAction _input_check;
+    private InputAction _input_cancel;
+    private bool _winCheck = false;
 
     void Start()
     {
@@ -38,38 +41,50 @@ public class Result :MonoBehaviour
         _input_right = _player.actions["Right"];
         _input_left = _player.actions["Left"];
         _input_check = _player.actions["Check"];
+        _input_cancel = _player.actions["Cancel"];
     }
 
     // Update is called once per frame
     void Update()
     {
-        for (int i = 0; i < _button.Count; i++)
+        if (!_winCheck)
         {
-            if (i == _count) _button[i].GetComponent<Image>().enabled = false;
-            else _button[i].GetComponent<Image>().enabled = true;
-        }
-
-        if (_input_right.WasPressedThisFrame())
-        {
-            if(_count < _button.Count - 1) _count++;
-        }
-
-        if (_input_left.WasPressedThisFrame())
-        {
-            if (_count > 0) _count--;
-        }
-
-        if (_input_check.WasPressedThisFrame())
-        {
-            switch (_count)
+            for (int i = 0; i < _button.Count; i++)
             {
-                case 0:
-                    break;
-                case 1:
-                    break;
-                case 2:
-                    break;
+                if (i == _count) _button[i].GetComponent<Image>().enabled = false;
+                else _button[i].GetComponent<Image>().enabled = true;
             }
+
+            if (_input_right.WasPressedThisFrame())
+            {
+                if (_count < _button.Count - 1) _count++;
+            }
+
+            if (_input_left.WasPressedThisFrame())
+            {
+                if (_count > 0) _count--;
+            }
+
+            if (_input_check.WasPressedThisFrame())
+            {
+                switch (_count)
+                {
+                    case 0:
+                        Chenge("Select");
+                        break;
+                    case 1:
+                        Window();
+                        break;
+                    case 2:
+                        Chenge("");
+                        break;
+                }
+            }
+        }
+
+        if (_input_cancel.WasPressedThisFrame())
+        {
+            if (_winCheck) Window();
         }
     }
 
@@ -110,6 +125,25 @@ public class Result :MonoBehaviour
             dis[3] = true;
             text.text += $"êiì¸ã÷é~ÅF{IC * -5}\n";
             sum += IC * -5;
+        }
+    }
+
+    public void Count(int c)
+    {
+        _count = c;
+    }
+
+    public void Window()
+    {
+        if (!_winCheck)
+        {
+            _window.SetActive(true);
+            _winCheck = true;
+        }
+        else
+        {
+            _window.SetActive(false);
+            _winCheck = false;
         }
     }
 

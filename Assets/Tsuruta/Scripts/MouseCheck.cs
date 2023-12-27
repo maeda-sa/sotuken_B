@@ -1,3 +1,4 @@
+using Asset.maeda;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +10,9 @@ public enum UI_Type
     Pause,
     End,
     Select,
-    Stage
+    Stage,
+    Result,
+    Over
 }
 
 public class MouseCheck : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
@@ -22,6 +25,8 @@ public class MouseCheck : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     [SerializeField] private Pause _pause;
     [SerializeField] private Select _select;
     [SerializeField] private StageSelect _stage;
+    [SerializeField] private Result _result;
+    [SerializeField] private GameOver _over;
 
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -39,6 +44,12 @@ public class MouseCheck : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
                 break;
             case UI_Type.Stage:
                 _stage.Count(_count);
+                break;
+            case UI_Type.Result:
+                _result.Count(_count);
+                break;
+            case UI_Type.Over:
+                _over.Count(_count);
                 break;
         }
     }
