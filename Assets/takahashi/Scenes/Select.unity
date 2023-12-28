@@ -1937,9 +1937,9 @@ MonoBehaviour:
   _carCollision: 0
   _walkerCollision: 0
   _pos:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
+  - {x: 1150, y: -0.36, z: 436}
+  - {x: 851, y: -0.36, z: 164}
+  - {x: 851, y: -0.36, z: 505}
   pos: {x: 0, y: 0, z: 0}
 --- !u!4 &379048267
 Transform:
@@ -9509,7 +9509,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a8a73c2a7b29404b91944ee66de543d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneName: mapScene1
+  _sceneName: MapScene
   stageName:
   - {fileID: 1925752391}
   - {fileID: 1207578955}

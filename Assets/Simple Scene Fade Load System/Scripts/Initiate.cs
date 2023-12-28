@@ -14,6 +14,7 @@ public static class Initiate
             return;
         }
 
+        Debug.Log(scene);
         GameObject init = new GameObject();
         init.name = "Fader";
         Canvas myCanvas = init.AddComponent<Canvas>();
