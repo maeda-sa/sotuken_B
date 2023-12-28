@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/takahashi/Scenes/GameOver.unity
     guid: 6ee1534300e89c94384fd973bb15e50a
+  - enabled: 1
+    path: Assets/maeda/Scene/mapScene 1.unity
+    guid: 51d9bd5989adbb547998ab646a19eced
   m_configObjects: {}

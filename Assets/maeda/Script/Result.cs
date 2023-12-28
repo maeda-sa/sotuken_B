@@ -10,6 +10,7 @@ using UnityEngine.UI;
 public class Result :MonoBehaviour
 {
     private GameState _gs;
+    [SerializeField] private string _sceneName;
     private int TC = 0,stop = 0, IC = 0 , speed = 0;
     [SerializeField] private TextMeshProUGUI text;
     private bool[] dis = { false, false, false, false };
@@ -76,7 +77,7 @@ public class Result :MonoBehaviour
                         Window();
                         break;
                     case 2:
-                        Chenge("");
+                        Chenge(_sceneName);
                         break;
                 }
             }
