@@ -54,6 +54,9 @@ public class Select : MonoBehaviour
         BGMSlider.value = PlayerPrefs.GetFloat("BgmVol", 0);
         SESlider.value = PlayerPrefs.GetFloat("SeVol", 0);
 
+        BGM.volume = BGMSlider.value;
+        SE.volume = SESlider.value;
+
         _length = 0;
         _width = -10;
         _setObj = _select;

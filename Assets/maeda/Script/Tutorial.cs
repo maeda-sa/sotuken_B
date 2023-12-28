@@ -21,6 +21,7 @@ public class Tutorial : MonoBehaviour
 
     void Start()
     {
+        i = 0;
         image.sprite = Timage[i];
         text.text = Tuttext[i];
 
