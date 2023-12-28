@@ -391,7 +391,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ui: 0
   _count: 2
+  _length: 10
+  _width: 10
   _pause: {fileID: 0}
+  _select: {fileID: 0}
+  _stage: {fileID: 0}
+  _result: {fileID: 0}
+  _over: {fileID: 0}
 --- !u!1 &1277316126169922220
 GameObject:
   m_ObjectHideFlags: 0
@@ -2583,7 +2589,7 @@ GameObject:
   - component: {fileID: 626311880970242191}
   - component: {fileID: 3350836615653347262}
   m_Layer: 5
-  m_Name: Canvas_Ver2.0
+  m_Name: Canvas_ver2.0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2609,7 +2615,7 @@ RectTransform:
   - {fileID: 539879159272708532}
   - {fileID: 8513739629499205279}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2842,7 +2848,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ui: 0
   _count: 4
+  _length: 10
+  _width: 10
   _pause: {fileID: 0}
+  _select: {fileID: 0}
+  _stage: {fileID: 0}
+  _result: {fileID: 0}
+  _over: {fileID: 0}
 --- !u!1 &5406351495546438987
 GameObject:
   m_ObjectHideFlags: 0
@@ -3445,7 +3457,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ui: 1
   _count: 0
+  _length: 10
+  _width: 10
   _pause: {fileID: 0}
+  _select: {fileID: 0}
+  _stage: {fileID: 0}
+  _result: {fileID: 0}
+  _over: {fileID: 0}
 --- !u!1 &7342446745512455928
 GameObject:
   m_ObjectHideFlags: 0
@@ -3609,7 +3627,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ui: 0
   _count: 0
+  _length: 10
+  _width: 10
   _pause: {fileID: 0}
+  _select: {fileID: 0}
+  _stage: {fileID: 0}
+  _result: {fileID: 0}
+  _over: {fileID: 0}
 --- !u!1 &7611359510605625560
 GameObject:
   m_ObjectHideFlags: 0
@@ -3925,7 +3949,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ui: 0
   _count: 3
+  _length: 10
+  _width: 10
   _pause: {fileID: 0}
+  _select: {fileID: 0}
+  _stage: {fileID: 0}
+  _result: {fileID: 0}
+  _over: {fileID: 0}
 --- !u!1 &8031859337603769212
 GameObject:
   m_ObjectHideFlags: 0
@@ -4304,7 +4334,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ui: 1
   _count: 1
+  _length: 10
+  _width: 10
   _pause: {fileID: 0}
+  _select: {fileID: 0}
+  _stage: {fileID: 0}
+  _result: {fileID: 0}
+  _over: {fileID: 0}
 --- !u!1 &8376799146268762278
 GameObject:
   m_ObjectHideFlags: 0
@@ -4468,7 +4504,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ui: 0
   _count: 1
+  _length: 10
+  _width: 10
   _pause: {fileID: 0}
+  _select: {fileID: 0}
+  _stage: {fileID: 0}
+  _result: {fileID: 0}
+  _over: {fileID: 0}
 --- !u!1 &8701685277815217624
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Option : MonoBehaviour
+public class PauseOption : MonoBehaviour
 {
     [SerializeField] private Slider BGMSlider;
     [SerializeField] private Slider SESlider;
@@ -13,7 +13,6 @@ public class Option : MonoBehaviour
     [SerializeField] private TextMeshProUGUI BGMVol;
     [SerializeField] private TextMeshProUGUI SEVol;
     private double bg, se;
-    [SerializeField] private TMP_Dropdown ScreenSize;
 
 
     // Start is called before the first frame update
@@ -32,24 +31,13 @@ public class Option : MonoBehaviour
         SE.volume = SESlider.value;
         BGMVol.text = $"{(int)bg}";
         SEVol.text = $"{(int)se}";
-        switch (ScreenSize.value)
-        {
-            case 0:
-                Screen.SetResolution(1920,1080,FullScreenMode.FullScreenWindow);
-                break;
-            case 1:
-                Screen.SetResolution(1920, 1080, FullScreenMode.Windowed);
-                break;
-            case 2:
-                Screen.SetResolution(1280, 720, FullScreenMode.Windowed);
-                break;
-        }
+       
     }
 
 
-    public void Close()
+    public void Close(GameObject option)
     {
-        this.Close();
+        option.SetActive(false);
     }
 
     private void OnDestroy()

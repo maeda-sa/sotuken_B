@@ -16,6 +16,7 @@ public class Pause : MonoBehaviour
     [SerializeField] private GameObject _mapwindow;
     [SerializeField] private GameObject _checkwindow;
     [SerializeField] private List<GameObject> _yesno;
+    [SerializeField] private GameObject _option;
 
     [Header("‘I‘ðŽž‚ÌŒø‰Ê‰¹")]
     [SerializeField] private AudioSource _as;
@@ -228,7 +229,7 @@ public class Pause : MonoBehaviour
 
     public void Option()
     {
-
+        _option.SetActive(true);
     }
 
     public void End()
