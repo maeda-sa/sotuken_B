@@ -8,6 +8,7 @@ public class Bike : MonoBehaviour
 {
     private GameManager _gm;
 
+    [SerializeField] private Vector3 _rbPos;
     [SerializeField] private Pause _pause;
     [SerializeField] private Camera _cm;
     [SerializeField] private Transform _handle;
@@ -46,7 +47,7 @@ public class Bike : MonoBehaviour
 
         _angle = _cm.gameObject.transform.localEulerAngles;
         _primary_angle = _cm.gameObject.transform.localEulerAngles;
-        GetComponent<Rigidbody>().centerOfMass = new Vector3(0, -3f, 1f);
+        GetComponent<Rigidbody>().centerOfMass = _rbPos;
     }
 
     public void ApplyLocalPositionToVisuals(WheelCollider collider)
