@@ -1274,6 +1274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d285bc25fd3038499fb081cec0d6747, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sceneName: MapScene
   guilt: {fileID: 103524988}
   _button:
   - {fileID: 6081128}

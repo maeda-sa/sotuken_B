@@ -1,27 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
+
 
 public class GameState : MonoBehaviour
 {
     public static GameState instance;
 
     [Header("M†–³‹‚Ì‰ñ”")]
-    [Disable] public int _trafficCount;
+    public int _trafficCount;
     [Header("ˆê’â~–³‹‚Ì‰ñ”")]
-    [Disable] public int _stopCount;
+    public int _stopCount;
     [Header("‘¬“x’´‰ß‚Ì‰ñ”")]
-    [Disable] public int _speedCount;
+    public int _speedCount;
     [Header("N“ü‹Ö~–³‹‚Ì‰ñ”")]
-    [Disable] public int _intrusionCount;
+    public int _intrusionCount;
     [Header("Ô‚Æ‚ÌÕ“Ë")]
-    [Disable] public bool _carCollision;
+    public bool _carCollision;
     [Header("•àsÒ‚Æ‚ÌÕ“Ë")]
-    [Disable] public bool _walkerCollision;
+    public bool _walkerCollision;
 
     [Header("ƒS[ƒ‹‚ÌˆÊ’u")]
     [SerializeField] private List<Vector3> _pos;
-    [Disable] public Vector3 pos;
+    public Vector3 pos;
 
     void Awake()
     {
@@ -55,7 +57,7 @@ public class GameState : MonoBehaviour
     public void GoalPosition(int _goal)
     {
         pos = _pos[_goal];
-        Initiate.Fade("", Color.black, 1.0f);
+        Initiate.Fade("MapScene", Color.black, 1.0f);
     }
 
     public int TrafficCountget()
