@@ -45429,7 +45429,7 @@ MonoBehaviour:
   _intrusionCount: 0
   _carCollision: 0
   _walkerCollision: 0
-  _goal: {fileID: 0}
+  _goal: {fileID: 1508455292}
   _vw: {fileID: 6290482730824293214}
 --- !u!4 &1868375325
 Transform:
