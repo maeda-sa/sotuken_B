@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    private GameState _gs;
+
     [Header("é©ì]é‘")]
     [SerializeField] private Bike _player;
 
@@ -20,18 +23,21 @@ public class GameManager : MonoBehaviour
     [Header("ï‡çsé“Ç∆ÇÃè’ìÀ")]
     [SerializeField] private bool _walkerCollision;
 
+    [SerializeField] private GameObject _goal;
     [SerializeField] private ViolationWindow _vw;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        _gs = GameObject.Find("GameState").GetComponent<GameState>();
+
+        _goal.gameObject.transform.position = _gs.pos;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+       
     }
 
     public void TrafficViolation()
@@ -61,17 +67,35 @@ public class GameManager : MonoBehaviour
     public void CarViolation()
     {
         _carCollision = true;
+        _gs._carCollision = true;
         _player.OnGoal();
+        Initiate.Fade("GameOver", Color.red, 0.25f);
     }
 
     public void WalkerViolation()
     {
         _walkerCollision = true;
+        _gs._walkerCollision = true;
         _player.OnGoal();
+        Initiate.Fade("GameOver", Color.black, 0.25f);
     }
 
     public void PlayerGoal()
     {
         _player.OnGoal();
+        _gs._trafficCount = _trafficCount;
+        _gs._stopCount = _stopCount;
+        _gs._speedCount = _speedCount;
+        _gs._intrusionCount = _intrusionCount;
+        Initiate.Fade("Result", Color.white, 0.5f);
+    }
+
+    private void OnDestroy()
+    {
+        PlayerPrefs.SetInt("TC", _trafficCount);
+        PlayerPrefs.SetInt("stop", _stopCount);
+        PlayerPrefs.SetInt("speed", _speedCount);
+        PlayerPrefs.SetInt("IC", _intrusionCount);
+        PlayerPrefs.Save();
     }
 }

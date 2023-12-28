@@ -37,6 +37,7 @@ public class Bike : MonoBehaviour
     [SerializeField] private AudioSource _as;
     [SerializeField] private AudioClip _pedalSe;
     [SerializeField] private AudioClip _breakeSe;
+    private GameManager GM;
 
     void Start()
     {
@@ -143,6 +144,7 @@ public class Bike : MonoBehaviour
         if(collision.gameObject.tag == "Car")
         {
             _car = true;
+            _goal = true;
             _pause.NoPause();
             _gm.CarViolation();
             GetComponent<Rigidbody>().centerOfMass = new Vector3(0, 0, 0);
@@ -213,7 +215,7 @@ public class Bike : MonoBehaviour
         }
     }
 
-    public void OnGoal()
+    public void  OnGoal()
     {
         _goal = true;
     }

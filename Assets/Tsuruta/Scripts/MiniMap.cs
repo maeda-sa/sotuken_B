@@ -52,6 +52,7 @@ public class MiniMap : MonoBehaviour
 
     [Header("ÉSÅ[ÉãÇÃà íu")]
     [SerializeField] private GameObject _goalPos;
+    [SerializeField] private bool _map;
 
     private GameObject _obj;
 
@@ -130,17 +131,17 @@ public class MiniMap : MonoBehaviour
         _player.position = new Vector3(_bike.transform.position.x, _bike.transform.position.y, _bike.transform.position.z);
         _player.rotation = Quaternion.Euler(90, _bike.transform.eulerAngles.y, 0);
         // Debug.Log(_bike.transform.rotation.y);
-       // _goal.position = new Vector3(_goalPos.transform.position.x, _goal.position.y, _goalPos.transform.position.z);
-
-        for (int i = 0; i < _carwalkers.Count; i++)
-        {
-            // Debug.Log(_enemys);
-            _enemys[i].transform.position = new Vector3(_carwalkers[i].transform.position.x, _enemys[i].transform.position.y,
-                                                        _carwalkers[i].transform.position.z);
-        }
+        if(_map) _goal.position = new Vector3(_goalPos.transform.position.x, _goalPos.transform.position.y + 5, _goalPos.transform.position.z);
 
         try
         {
+            for (int i = 0; i < _carwalkers.Count; i++)
+            {
+                // Debug.Log(_enemys);
+                _enemys[i].transform.position = new Vector3(_carwalkers[i].transform.position.x, _enemys[i].transform.position.y,
+                                                            _carwalkers[i].transform.position.z);
+            }
+
             for (int i = 0; i < _traffics.Count; i++)
             {
                 TrafficLight tl = _traffics[i].GetComponent<TrafficLight>();
