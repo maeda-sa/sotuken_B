@@ -23,7 +23,7 @@ namespace Asset.maeda
         private void Start()
         {
             _gs = GameObject.Find("GameState").GetComponent<GameState>();
-            guilt.text = "お前の罪を数えろ";
+            guilt.text = "ゲームオーバー\nよく注意して運転してください";
 
             _input_right = _player.actions["Right"];
             _input_left = _player.actions["Left"];
