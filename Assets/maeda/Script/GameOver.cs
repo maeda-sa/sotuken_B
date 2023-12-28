@@ -13,6 +13,7 @@ namespace Asset.maeda
         private GameState _gs;
         private int _count = 0;
 
+        [SerializeField] private string _sceneName;
         [SerializeField]TextMeshProUGUI guilt;
         [SerializeField] private List<GameObject> _button;
         [SerializeField] private PlayerInput _player;
@@ -56,7 +57,7 @@ namespace Asset.maeda
                         SceneChange("Select");
                         break;
                     case 1:
-                        SceneChange("");
+                        SceneChange(_sceneName);
                         break;
                 }
             }

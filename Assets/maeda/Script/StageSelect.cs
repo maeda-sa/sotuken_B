@@ -11,6 +11,7 @@ public class StageSelect : MonoBehaviour
 {
     private GameState _gs;
 
+    [SerializeField] private string _sceneName;
     [SerializeField] private List<TextMeshProUGUI> stageName;
     [SerializeField] private List<TextMeshProUGUI> diff;
     [SerializeField] private List<Stageitem> item;
@@ -69,6 +70,7 @@ public class StageSelect : MonoBehaviour
     public void game(int StageId)
     {
         _gs.GoalPosition(StageId);
+        Initiate.Fade(_sceneName, Color.black, 1.0f);
     }
 
     public void Count(int _count)
