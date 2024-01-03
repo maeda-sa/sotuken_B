@@ -24,6 +24,11 @@ public class Result :MonoBehaviour
     private InputAction _input_check;
     private InputAction _input_cancel;
     private bool _winCheck = false;
+    [SerializeField] private GameObject _TC;
+    [SerializeField] private GameObject _stop;
+    [SerializeField] private GameObject _speed;
+    [SerializeField] private GameObject _IC;
+
 
     void Start()
     {
@@ -139,6 +144,10 @@ public class Result :MonoBehaviour
         if (!_winCheck)
         {
             _window.SetActive(true);
+            _TC.SetActive(dis[0]);
+            _stop.SetActive(dis[1]);
+            _speed.SetActive(dis[2]);
+            _IC.SetActive(dis[3]);
             _winCheck = true;
         }
         else
