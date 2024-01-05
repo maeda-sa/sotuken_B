@@ -42,11 +42,14 @@ public class TrafficCheck_Child : MonoBehaviour
         try
         {
             if (_light.CarCheck() == LightType.red || _light.CarCheck() == LightType.yellow &&
-                other.gameObject.tag == "Car" && !_car)
+                other.gameObject.tag == "Car")
             {
-                CinemachineDollyCart cdc = other.GetComponent<CinemachineDollyCart>();
+                if (!other.GetComponent<Car>().car)
+                {
+                    CinemachineDollyCart cdc = other.GetComponent<CinemachineDollyCart>();
 
-                cdc.m_Speed = 0;
+                    cdc.m_Speed = 0;
+                }
             }
         } catch (Exception e) { }
     }
@@ -61,7 +64,7 @@ public class TrafficCheck_Child : MonoBehaviour
                 CinemachineDollyCart cdc = other.GetComponent<CinemachineDollyCart>();
 
                 cdc.m_Speed = _carSpeed;
-                _car = true;
+                other.GetComponent<Car>().car = true;
             }
         } catch(Exception e) { }
     }
@@ -73,7 +76,7 @@ public class TrafficCheck_Child : MonoBehaviour
             if (_light.CarCheck() == LightType.red || _light.CarCheck() == LightType.yellow &&
                 other.gameObject.tag == "Car")
             {
-                _car = false;
+                other.GetComponent<Car>().car = false;
             }
         } catch (Exception e) { }
     }
