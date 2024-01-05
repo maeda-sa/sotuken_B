@@ -20,7 +20,16 @@ public class TrafficCheck : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        for (i = 0; i < _tcc.Count; i++)
+        {
+            if (_tcc[i].RedCheck())
+            {
+                Debug.Log("M†–³Ž‹");
+                _gm.TrafficViolation();
+                _tcc[i].CheckReset();
+                break;
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -29,11 +38,15 @@ public class TrafficCheck : MonoBehaviour
         {
             for(i = 0; i < _tcc.Count; i++)
             {
-                if (_tcc[i].RedCheck())
+                if (_tcc[i].BlueCheck())
                 {
                     _tcc[i].CheckReset();
+                }
+                if (_tcc[i].RedCheck())
+                {
                     Debug.Log("M†–³Ž‹");
                     _gm.TrafficViolation();
+                    _tcc[i].CheckReset();
                     break;
                 }
             }
