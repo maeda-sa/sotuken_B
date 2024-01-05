@@ -11,6 +11,7 @@ public class TrafficCheck_Child : MonoBehaviour
     private float _carSpeed = 50;
     private bool _blue;
     private bool _red;
+    private bool _car;
 
     private void Update()
     {
@@ -45,7 +46,7 @@ public class TrafficCheck_Child : MonoBehaviour
         try
         {
             if (_light.CarCheck() == LightType.red || _light.CarCheck() == LightType.yellow &&
-           other.gameObject.tag == "Car")
+           other.gameObject.tag == "Car" && !_car)
             {
                 CinemachineDollyCart cdc = other.GetComponent<CinemachineDollyCart>();
 
@@ -57,8 +58,18 @@ public class TrafficCheck_Child : MonoBehaviour
                 CinemachineDollyCart cdc = other.GetComponent<CinemachineDollyCart>();
 
                 cdc.m_Speed = _carSpeed;
+                _car = true;
             }
         } catch(Exception e) { }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (_light.CarCheck() == LightType.red || _light.CarCheck() == LightType.yellow &&
+           other.gameObject.tag == "Car")
+        {
+            _car = false;
+        }
     }
 
     public bool BlueCheck()
