@@ -9,7 +9,7 @@ public class Select : MonoBehaviour
 {
     [SerializeField] private List<GameObject> bike;
     [SerializeField] private GameObject selectUi;
-    private bool isStop = false;
+   
     [SerializeField] private Slider BGMSlider;
     [SerializeField] private Slider SESlider;
     [SerializeField]private AudioSource BGM;
@@ -188,8 +188,7 @@ public class Select : MonoBehaviour
     
     public void Option(GameObject item)
     {
-        if(!isStop)
-        {
+        
             if (_length == 2 || _width == 2)
             {
                 SE.Play();
@@ -201,32 +200,27 @@ public class Select : MonoBehaviour
 
                 SE.Play();
                 item.SetActive(true);
-                isStop = true;
-            }
-        }
+                }
+        
     }
 
     public void Back(GameObject item)
     {
-        if (isStop)
-        {
+
             selectUi.SetActive(true);   
            
             SE.Play();
             item.SetActive(false) ;
-            isStop = false;
-        }
+        
     }
 
     public void EndGame()
     {
-        if (!isStop)
-        {
+        
             Debug.Log("アッセンブル");
             //UnityEditor.EditorApplication.isPlaying = false;
             Application.Quit();
         }
-    }
 
     public void Length(int i)
     {
