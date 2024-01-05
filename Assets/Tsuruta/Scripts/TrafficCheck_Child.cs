@@ -49,6 +49,7 @@ public class TrafficCheck_Child : MonoBehaviour
                     CinemachineDollyCart cdc = other.GetComponent<CinemachineDollyCart>();
 
                     cdc.m_Speed = 0;
+                    if (other.GetComponent<Car>()._debug) Debug.Log("êMçÜ");
                 }
             }
         } catch (Exception e) { }
