@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,6 +19,26 @@ public class Car : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             _gm.CarViolation();
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Car")
+        {
+            CinemachineDollyCart cdc = gameObject.GetComponent<CinemachineDollyCart>();
+
+            cdc.m_Speed = 0;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Car")
+        {
+            CinemachineDollyCart cdc = other.GetComponent<CinemachineDollyCart>();
+
+            cdc.m_Speed = 50;
         }
     }
 }
