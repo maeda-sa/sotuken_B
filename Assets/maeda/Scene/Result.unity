@@ -294,7 +294,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: mapScene
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &58765347
@@ -545,7 +545,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1671773808}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.99919385
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -803,6 +803,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &243457318 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4087349943702901135, guid: 4b71776190645de49a392d05d8c8142b, type: 3}
+  m_PrefabInstance: {fileID: 318799402}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &276702585
 GameObject:
   m_ObjectHideFlags: 0
@@ -1140,6 +1145,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b71776190645de49a392d05d8c8142b, type: 3}
+--- !u!1 &338452019 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4187239996462986168, guid: 44cf061fbb886ca48af107f95407d73d, type: 3}
+  m_PrefabInstance: {fileID: 652069561}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &343569355
 GameObject:
   m_ObjectHideFlags: 0
@@ -1373,6 +1383,11 @@ MonoBehaviour:
   _stage: {fileID: 0}
   _result: {fileID: 370990089}
   _over: {fileID: 0}
+--- !u!1 &367085125 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9024331989327147869, guid: a055ad4d108adf849a9dcef097b991c3, type: 3}
+  m_PrefabInstance: {fileID: 1643274205}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &370990088
 GameObject:
   m_ObjectHideFlags: 0
@@ -1411,6 +1426,10 @@ MonoBehaviour:
   - {fileID: 276702585}
   - {fileID: 1573122905}
   _player: {fileID: 370990091}
+  _TC: {fileID: 338452019}
+  _stop: {fileID: 596225258}
+  _speed: {fileID: 367085125}
+  _IC: {fileID: 243457318}
 --- !u!4 &370990090
 Transform:
   m_ObjectHideFlags: 0
@@ -2298,6 +2317,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &596225258 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8706799389342134164, guid: ffacd4034e34247449ffc9d6ea0288d0, type: 3}
+  m_PrefabInstance: {fileID: 104388698}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &599334729 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5258875901476354914, guid: ffacd4034e34247449ffc9d6ea0288d0, type: 3}
@@ -4066,7 +4090,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000032424927}
+  m_AnchoredPosition: {x: 0, y: 0.000002722975}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1877747169
