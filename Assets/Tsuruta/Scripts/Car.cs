@@ -6,6 +6,7 @@ using UnityEngine;
 public class Car : MonoBehaviour
 {
     private GameManager _gm;
+    public bool car;
 
     // Start is called before the first frame update
     void Start()
@@ -36,9 +37,11 @@ public class Car : MonoBehaviour
     {
         if (other.gameObject.tag == "Car")
         {
-            CinemachineDollyCart cdc = other.GetComponent<CinemachineDollyCart>();
+            CinemachineDollyCart cdc = gameObject.GetComponent<CinemachineDollyCart>();
 
             cdc.m_Speed = 50;
         }
     }
+
+
 }
