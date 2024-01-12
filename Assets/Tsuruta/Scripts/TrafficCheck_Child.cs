@@ -8,7 +8,7 @@ public class TrafficCheck_Child : MonoBehaviour
 {
     [SerializeField] private TrafficLight _light;
 
-    private float _carSpeed = 50;
+    private float _carSpeed = 20;
     private bool _blue;
     private bool _red;
     private bool _car;
@@ -39,47 +39,6 @@ public class TrafficCheck_Child : MonoBehaviour
         {
             _red = true;
         }
-        try
-        {
-            if (_light.CarCheck() == LightType.red || _light.CarCheck() == LightType.yellow &&
-                other.gameObject.tag == "Car")
-            {
-                if (!other.GetComponent<Car>().car)
-                {
-                    CinemachineDollyCart cdc = other.GetComponent<CinemachineDollyCart>();
-
-                    cdc.m_Speed = 0;
-                    if (other.GetComponent<Car>()._debug) Debug.Log("êMçÜ");
-                }
-            }
-        } catch (Exception e) { }
-    }
-
-
-    private void OnTriggerStay(Collider other)
-    {
-        try
-        {
-            if (_light.CarCheck() == LightType.blue && other.gameObject.tag == "Car")
-            {
-                CinemachineDollyCart cdc = other.GetComponent<CinemachineDollyCart>();
-
-                cdc.m_Speed = _carSpeed;
-                other.GetComponent<Car>().car = true;
-            }
-        } catch(Exception e) { }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        try
-        {
-            if (_light.CarCheck() == LightType.red || _light.CarCheck() == LightType.yellow &&
-                other.gameObject.tag == "Car")
-            {
-                other.GetComponent<Car>().car = false;
-            }
-        } catch (Exception e) { }
     }
 
     public bool BlueCheck()
@@ -90,6 +49,11 @@ public class TrafficCheck_Child : MonoBehaviour
     public bool RedCheck()
     {
         return _red;
+    }
+
+    public LightType Light()
+    {
+        return _light.CarCheck();
     }
 
     public void CheckReset()

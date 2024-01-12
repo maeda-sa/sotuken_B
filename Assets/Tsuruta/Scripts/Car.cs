@@ -6,6 +6,7 @@ using UnityEngine;
 public class Car : MonoBehaviour
 {
     private GameManager _gm;
+    public CarCheck cc;
     public bool _debug;
     public bool car;
 
@@ -26,24 +27,32 @@ public class Car : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Car")
+        if(other.gameObject.tag == "Traffic" && !car)
         {
-            CinemachineDollyCart cdc = gameObject.GetComponent<CinemachineDollyCart>();
+            car = true;
+            TrafficCheck_Child tc = other.GetComponent<TrafficCheck_Child>();
 
-            cdc.m_Speed = 0;
-            if (_debug) Debug.Log("ŽÔŠÔ‹——£");
+            if (tc.Light() == LightType.red || tc.Light() == LightType.yellow) cc.Stop();
+            if (tc.Light() == LightType.blue) Invoke("TrafficSet", 3);
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "Car")
+        if (other.gameObject.tag == "Traffic")
         {
-            CinemachineDollyCart cdc = gameObject.GetComponent<CinemachineDollyCart>();
+            TrafficCheck_Child tc = other.GetComponent<TrafficCheck_Child>();
 
-            cdc.m_Speed = 50;
+            if (tc.Light() == LightType.blue)
+            {
+                cc.Accel();
+                Invoke("TrafficSet", 3);
+            }
         }
     }
 
-
+    private void TrafficSet()
+    {
+        car = false;
+    }
 }
