@@ -28,7 +28,7 @@ public class GameState : MonoBehaviour
     void Awake()
     {
         CheckInstance();
-        //DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(this.gameObject);
     }
 
     void CheckInstance()
