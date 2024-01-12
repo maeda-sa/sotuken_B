@@ -28,6 +28,7 @@ public class Result :MonoBehaviour
     [SerializeField] private GameObject _stop;
     [SerializeField] private GameObject _speed;
     [SerializeField] private GameObject _IC;
+    [SerializeField] private AudioSource _AS;
 
 
     void Start()
@@ -48,6 +49,8 @@ public class Result :MonoBehaviour
         _input_left = _player.actions["Left"];
         _input_check = _player.actions["Check"];
         _input_cancel = _player.actions["Cancel"];
+
+        _AS.volume = PlayerPrefs.GetFloat("SeVol");
     }
 
     // Update is called once per frame
@@ -163,6 +166,7 @@ public class Result :MonoBehaviour
         _gs._stopCount = 0;
         _gs._speedCount = 0;
         _gs._intrusionCount = 0;
+        _AS.Play();
         Initiate.Fade(SceneName, Color.black, 1.0f);
     }
 }
