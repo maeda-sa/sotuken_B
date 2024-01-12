@@ -20,6 +20,8 @@ namespace Asset.maeda
         private InputAction _input_right;
         private InputAction _input_left;
         private InputAction _input_check;
+        [SerializeField] private AudioSource BGM;
+        [SerializeField] private AudioSource Se;
 
         private void Start()
         {
@@ -29,6 +31,9 @@ namespace Asset.maeda
             _input_right = _player.actions["Right"];
             _input_left = _player.actions["Left"];
             _input_check = _player.actions["Check"];
+
+            BGM.volume = PlayerPrefs.GetFloat("BgmVol",0);
+            Se.volume = PlayerPrefs.GetFloat("SeVol", 0);
         }
 
         private void Update()
@@ -70,6 +75,7 @@ namespace Asset.maeda
 
         public  void SceneChange(string SceneName)
         {
+            Se.Play();
             _gs._carCollision = false;
             _gs._walkerCollision = false;
             Initiate.Fade(SceneName, Color.black, 1.0f);

@@ -29,6 +29,7 @@ public class Result :MonoBehaviour
     [SerializeField] private GameObject _speed;
     [SerializeField] private GameObject _IC;
     [SerializeField] private AudioSource _AS;
+    [SerializeField] private AudioSource _Bgm;
 
 
     void Start()
@@ -51,6 +52,7 @@ public class Result :MonoBehaviour
         _input_cancel = _player.actions["Cancel"];
 
         _AS.volume = PlayerPrefs.GetFloat("SeVol");
+        _Bgm.volume = PlayerPrefs.GetFloat("BgmVol", 0);
     }
 
     // Update is called once per frame
