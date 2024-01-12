@@ -22,7 +22,7 @@ public class OutputBikeSpeed : MonoBehaviour
     {
         try
         {
-            speedText.text = Mathf.Abs(_ce.speed).ToString("00") + "km/h";
+            speedText.text = Mathf.Abs(_ce.speed * 5).ToString("00") + "km/h";
         }
         catch(Exception e) { }
     }
