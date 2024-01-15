@@ -1696,9 +1696,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 379048266}
-        m_TargetAssemblyTypeName: GameState, Assembly-CSharp
-        m_MethodName: GoalPosition
+      - m_Target: {fileID: 1557965155}
+        m_TargetAssemblyTypeName: StageSelect, Assembly-CSharp
+        m_MethodName: game
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4912,9 +4912,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 379048266}
-        m_TargetAssemblyTypeName: GameState, Assembly-CSharp
-        m_MethodName: GoalPosition
+      - m_Target: {fileID: 1557965155}
+        m_TargetAssemblyTypeName: StageSelect, Assembly-CSharp
+        m_MethodName: game
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10241,9 +10241,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 379048266}
-        m_TargetAssemblyTypeName: GameState, Assembly-CSharp
-        m_MethodName: GoalPosition
+      - m_Target: {fileID: 1557965155}
+        m_TargetAssemblyTypeName: StageSelect, Assembly-CSharp
+        m_MethodName: game
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
