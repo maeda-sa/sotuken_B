@@ -17,8 +17,11 @@ public class StageSelect : MonoBehaviour
     [SerializeField] private List<Stageitem> item;
     [SerializeField] private PlayerInput _player;
     [SerializeField] private List<GameObject> _buttons;
+    [SerializeField] private GameObject _freeButton;
+    [SerializeField] private GameObject _freeButtonImage;
 
     private int _buttonCount = 0;
+    private int _command = 0;
 
     private InputAction _input_up;
     private InputAction _input_down;
@@ -63,13 +66,41 @@ public class StageSelect : MonoBehaviour
 
         if (_input_check.WasPressedThisFrame())
         {
-            game(_buttonCount);
+            if (_buttonCount != 3) game(_buttonCount);
+            else Free();
         }
+
+        if (_input_up.WasPressedThisFrame() && _command == 0 || _command == 1) _command++;
+
+        if (_input_down.WasPressedThisFrame() && _command == 2 || _command == 3) _command++;
+
+        if (_input_left.WasPressedThisFrame() && _command == 4 || _command == 6) _command++;
+
+        if (_input_right.WasPressedThisFrame() && _command == 5) _command++;
+
+        // if (_input_up.WasPressedThisFrame() && _command != 0 && _command != 1) _command = 0;
+
+        // if (_input_down.WasPressedThisFrame() && _command != 2 && _command != 3) _command = 0;
+
+        // if (_input_left.WasPressedThisFrame() && _command != 4 && _command != 6) _command = 0;
+
+        // if (_input_right.WasPressedThisFrame() && _command != 5 && _command != 7) _command = 0;
+
+        if (_input_right.WasPressedThisFrame() && _command == 7)
+        {
+            _buttons.Add(_freeButtonImage);
+            _freeButton.SetActive(true);
+        }     
     }
 
     public void game(int StageId)
     {
         _gs.GoalPosition(StageId);
+    }
+
+    public void Free()
+    {
+        _gs.FreePlay();
     }
 
     public void Count(int _count)
