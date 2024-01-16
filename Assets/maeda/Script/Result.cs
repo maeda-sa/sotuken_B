@@ -58,6 +58,8 @@ public class Result :MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (_gs._practice) text.text = "©—R’Tõ‚ÍÌ“_‚³‚ê‚Ü‚¹‚ñ";
+
         if (!_winCheck)
         {
             for (int i = 0; i < _button.Count; i++)

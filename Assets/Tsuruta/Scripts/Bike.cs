@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class Bike : MonoBehaviour
 {
     private GameManager _gm;
+    private GameState _gs;
 
     [SerializeField] private Vector3 _rbPos;
     [SerializeField] private Pause _pause;
@@ -42,6 +43,7 @@ public class Bike : MonoBehaviour
 
     void Start()
     {
+        _gs = GameObject.Find("GameState").GetComponent<GameState>();
         GameObject gm = GameObject.Find("GameManager");
         _gm = gm.GetComponent<GameManager>();
 
@@ -146,7 +148,7 @@ public class Bike : MonoBehaviour
         {
             _car = true;
             _goal = true;
-            _pause.NoPause();
+            if(!_gs._practice) _pause.NoPause();
             _gm.CarViolation();
             GetComponent<Rigidbody>().centerOfMass = new Vector3(0, 0, 0);
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
@@ -219,6 +221,12 @@ public class Bike : MonoBehaviour
     public void  OnGoal()
     {
         _goal = true;
+        if (_gs._practice)
+        {
+            Invoke("OffGoal", 5);
+            GetComponent<Rigidbody>().centerOfMass = _rbPos;
+            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationZ;
+        }
     }
 
     public void OffGoal()
