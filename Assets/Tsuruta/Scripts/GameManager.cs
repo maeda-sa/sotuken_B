@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
         _carCollision = true;
         _gs._carCollision = true;
         _player.OnGoal();
-        Initiate.Fade("GameOver", Color.red, 0.25f);
+        if(!_gs._practice) Initiate.Fade("GameOver", Color.red, 0.25f);
     }
 
     public void WalkerViolation()
@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
         _walkerCollision = true;
         _gs._walkerCollision = true;
         _player.OnGoal();
-        Initiate.Fade("GameOver", Color.black, 0.25f);
+        if (!_gs._practice) Initiate.Fade("GameOver", Color.black, 0.25f);
     }
 
     public void PlayerGoal()
