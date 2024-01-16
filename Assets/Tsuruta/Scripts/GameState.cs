@@ -8,6 +8,8 @@ public class GameState : MonoBehaviour
 {
     public static GameState instance;
 
+    [Header("フリープレイ")]
+    public bool _practice;
     [Header("信号無視の回数")]
     public int _trafficCount;
     [Header("一時停止無視の回数")]
@@ -57,6 +59,12 @@ public class GameState : MonoBehaviour
     public void GoalPosition(int _goal)
     {
         pos = _pos[_goal];
+        Initiate.Fade("MapScene", Color.black, 1.0f);
+    }
+
+    public void FreePlay()
+    {
+        _practice = true;
         Initiate.Fade("MapScene", Color.black, 1.0f);
     }
 
