@@ -22,6 +22,7 @@ public class StageSelect : MonoBehaviour
 
     private int _buttonCount = 0;
     private int _command = 0;
+    private bool _commandCheck;
 
     private InputAction _input_up;
     private InputAction _input_down;
@@ -66,13 +67,21 @@ public class StageSelect : MonoBehaviour
 
         if (_input_check.WasPressedThisFrame())
         {
-            if (_buttonCount != 3) game(_buttonCount);
+            if (_buttonCount < 3) game(_buttonCount);
             else Free();
         }
 
-        if (_input_up.WasPressedThisFrame() && _command == 0 || _command == 1) _command++;
+        if (_input_up.WasPressedThisFrame() && !_commandCheck && _command == 0 || _command == 1)
+        {
+            _commandCheck = true;
+            _command++;
+        }
 
-        if (_input_down.WasPressedThisFrame() && _command == 2 || _command == 3) _command++;
+        if (_input_down.WasPressedThisFrame() && !_commandCheck && _command == 2 || _command == 3)
+        {
+            _commandCheck = true;
+            _command++;
+        }
 
         if (_input_left.WasPressedThisFrame() && _command == 4 || _command == 6) _command++;
 
@@ -88,9 +97,12 @@ public class StageSelect : MonoBehaviour
 
         if (_input_right.WasPressedThisFrame() && _command == 7)
         {
+            _command++;
             _buttons.Add(_freeButtonImage);
             _freeButton.SetActive(true);
-        }     
+        }
+
+        if (!_input_up.WasPressedThisFrame() && !_input_down.WasPressedThisFrame()) _commandCheck = false;
     }
 
     public void game(int StageId)
