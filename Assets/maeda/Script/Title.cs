@@ -10,7 +10,7 @@ public class Title : MonoBehaviour
     [SerializeField] private PlayerInput _player;
     [SerializeField] string SceneName;
     CustomLoadScene CustomLoadScene;
-    [SerializeField] TextMeshProUGUI start;
+    [SerializeField]private  List<TextMeshProUGUI> start;
     private float time;
     public float speed = 1.0f;
 
@@ -33,8 +33,8 @@ public class Title : MonoBehaviour
         {
             Initiate.Fade(SceneName, Color.black, 1.0f);
         }
-
-        start.color = GetAlphaColor(start.color);
+        for(int i = 0; i < start.Count; i++)
+            start[i].color = GetAlphaColor(start[i].color);
     }
 
     Color GetAlphaColor(Color color)
