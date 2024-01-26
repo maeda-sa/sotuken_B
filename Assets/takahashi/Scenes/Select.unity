@@ -1938,9 +1938,9 @@ MonoBehaviour:
   _carCollision: 0
   _walkerCollision: 0
   _pos:
-  - {x: 1150, y: 0, z: 436}
-  - {x: 851, y: 0, z: 505}
-  - {x: 1030, y: 0, z: 164}
+  - {x: 1150, y: 0.25, z: 436}
+  - {x: 851, y: 0.25, z: 505}
+  - {x: 1030, y: 0.25, z: 164}
   pos: {x: 0, y: 0, z: 0}
 --- !u!4 &379048267
 Transform:

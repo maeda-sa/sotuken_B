@@ -28,6 +28,7 @@ public class Signs : MonoBehaviour
     {
         GameObject gm = GameObject.Find("GameManager");
         _gm = gm.GetComponent<GameManager>();
+        _speedLimit /= 5;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -49,6 +50,7 @@ public class Signs : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        Debug.Log(other);
         if (other.gameObject.tag == "Player")
         {
             switch (_sign)
