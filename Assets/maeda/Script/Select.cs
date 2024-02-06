@@ -51,8 +51,8 @@ public class Select : MonoBehaviour
             bike[i].transform.Rotate(new Vector3(0, 0, 0));
         }
 
-        BGMSlider.value = PlayerPrefs.GetFloat("BgmVol", 0);
-        SESlider.value = PlayerPrefs.GetFloat("SeVol", 0);
+        BGMSlider.value = PlayerPrefs.GetFloat("BgmVol", 0.1f);
+        SESlider.value = PlayerPrefs.GetFloat("SeVol", 0.1f);
 
         BGM.volume = BGMSlider.value;
         SE.volume = SESlider.value;
